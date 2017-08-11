@@ -3,6 +3,20 @@
 (function($) {
     "use strict"; // Start of use strict
 
+    $(document).ready(function() {
+		var prevScroll = 0;
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 500) {
+				if(prevScroll <= 500) {
+					$('.top-hidden').fadeIn(400, 'easeInCubic');
+				}
+            } else if(prevScroll > 500) {
+                $('.top-hidden').fadeOut(300, 'linear');
+            }
+			prevScroll = $(this).scrollTop();
+        });
+    });
+
     // jQuery for page scrolling feature - requires jQuery Easing plugin
     $('a.page-scroll').bind('click', function(event) {
         var $anchor = $(this);
@@ -19,7 +33,7 @@
     });
 
     // Closes the Responsive Menu on Menu Item Click
-    $('.navbar-collapse ul li a').click(function(){ 
+    $('.navbar-collapse ul li a').click(function(){
             $('.navbar-toggle:visible').click();
     });
 
@@ -28,6 +42,6 @@
         offset: {
             top: 100
         }
-    })
+    });
 
 })(jQuery); // End of use strict

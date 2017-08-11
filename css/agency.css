@@ -8,10 +8,20 @@ body {
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .text-muted {
-  color: #777777;
+	color: #777777;
 }
 .text-primary {
-  color: #fed136;
+	color: #1c4563; /*#fed136;*/
+}
+.text-light,
+.text-light h4 {
+	color: #c4cdda;
+	text-transform: none;
+}
+.text-email,
+.text-email .text-light{
+	font-size: 16px;
+	color: #c4cdda;
 }
 p {
   font-size: 14px;
@@ -25,10 +35,11 @@ a:hover,
 a:focus,
 a:active,
 a.active {
-  outline: none;
+	outline: none;
+	text-decoration: none;
 }
 a {
-  color: #fed136;
+	color: #1c4563;
 }
 a:hover,
 a:focus,
@@ -153,7 +164,7 @@ fieldset[disabled] .btn-xl.active {
 }
 .navbar-custom .navbar-brand {
 	color: #dab288;
-	font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+	font-family: "Helvetica Neue", Helvetica, Arial, cursive;
 }
 .navbar-custom .navbar-brand:hover,
 .navbar-custom .navbar-brand:focus,
@@ -165,8 +176,8 @@ fieldset[disabled] .btn-xl.active {
   border-color: rgba(255, 255, 255, 0.02);
 }
 .navbar-custom .navbar-toggle {
-  background-color: #fed136;
-  border-color: #fed136;
+	background-color: #1c4563; /*#fed136;*/
+	border-color: #1c4563;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   color: white;
@@ -174,7 +185,7 @@ fieldset[disabled] .btn-xl.active {
 }
 .navbar-custom .navbar-toggle:hover,
 .navbar-custom .navbar-toggle:focus {
-  background-color: #fed136;
+	background-color: #1c4563; /*#fed136;*/
 }
 .navbar-custom .nav li a {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -185,18 +196,19 @@ fieldset[disabled] .btn-xl.active {
 }
 .navbar-custom .nav li a:hover,
 .navbar-custom .nav li a:focus {
-  color: #fed136;
+	background-color: #1c4563; /*#fed136;*/
+	color: #cdcbc8;
   outline: none;
 }
 .navbar-custom .navbar-nav > .active > a {
   border-radius: 0;
   color: white;
-  background-color: #fed136;
+  background-color: #1c4563; /*#fed136;*/
 }
 .navbar-custom .navbar-nav > .active > a:hover,
 .navbar-custom .navbar-nav > .active > a:focus {
-  color: white;
-  background-color: #fec503;
+	color: white;
+	background-color: #27628b; /*#fec503;*/
 }
 @media (min-width: 768px) {
   .navbar-custom {
@@ -225,6 +237,15 @@ fieldset[disabled] .btn-xl.active {
   .navbar-custom.affix .navbar-brand {
     font-size: 1.5em;
   }
+}
+.top-hidden {
+	display: none;
+	text-decoration: none;
+	color: #dab288;
+	font-family: "Dancing Script", "Helvetica Neue", Helvetica, Arial, cursive;
+	font-style: italic;
+	font-size: 30px;
+	color: #c4cdda;
 }
 header {
   background-image: url('../img/header-bg.jpg');
@@ -424,7 +445,7 @@ section h3.section-subheading {
   height: 80px;
   position: absolute;
   z-index: 100;
-  background-color: #fed136;
+  background-color: #1c4563; /*#fed136;*/
   color: white;
   border-radius: 100%;
   border: 7px solid #f1f1f1;
@@ -488,7 +509,7 @@ section h3.section-subheading {
   }
   .timeline > li .timeline-image h4 {
     font-size: 13px;
-    margin-top: 16px;
+    margin-top: 20px;
     line-height: 18px;
   }
   .timeline > li.timeline-inverted > .timeline-panel {
@@ -511,7 +532,7 @@ section h3.section-subheading {
   }
   .timeline > li .timeline-image h4 {
     font-size: 18px;
-    margin-top: 30px;
+    margin-top: 37px;
     line-height: 26px;
   }
   .timeline > li.timeline-inverted > .timeline-panel {
@@ -531,7 +552,7 @@ section h3.section-subheading {
     margin-left: -85px;
   }
   .timeline > li .timeline-image h4 {
-    margin-top: 40px;
+    margin-top: 50px;
   }
   .timeline > li.timeline-inverted > .timeline-panel {
     padding: 0 100px 20px 20px;
@@ -557,13 +578,13 @@ aside.clients img {
   margin: 50px auto;
 }
 section#contact {
-  background-color: #222222;
+	background-color: #DDDDDD; /*#222222;*/
   background-image: url('../img/map-image.png');
   background-position: center;
   background-repeat: no-repeat;
 }
 section#contact .section-heading {
-  color: white;
+  color: black;
 }
 section#contact .form-group {
   margin-bottom: 25px;
