@@ -39,13 +39,17 @@ a.active {
 	text-decoration: none;
 }
 a {
-	color: #1c4563;
+	color: #27628b; /*#1c4563;*/
 }
+timeline-panel a:hover,
+timeline-panel a:focus,
+timeline-panel a:active,
+timeline-panel a.active,
 a:hover,
 a:focus,
 a:active,
 a.active {
-  color: #fec503;
+	color: #c1a157; /*#e4d6b5; #fec503;*/
 }
 h1,
 h2,
@@ -62,6 +66,9 @@ h6 {
 }
 .bg-light-gray {
   background-color: #eeeeee;
+}
+.bg-medium-gray {
+	background-color: #cccccc;
 }
 .bg-darkest-gray {
   background-color: #222222;
@@ -229,7 +236,8 @@ fieldset[disabled] .btn-xl.active {
     border-radius: 3px;
   }
 }
-.top-hidden {
+.top-hidden ,
+.top-unhidden {
 	display: none;
 	text-decoration: none;
 	color: #dab288;
@@ -239,6 +247,9 @@ fieldset[disabled] .btn-xl.active {
 	color: #c4cdda;
 	line-height: 50px;
 	padding-left: 10px;
+}
+.top-unhidden {
+	display: block;
 }
 @media (min-width: 768px) {
   .navbar-custom.affix {
@@ -357,11 +368,17 @@ section h3.section-subheading {
 #portfolio .portfolio-item .portfolio-link {
   display: block;
   position: relative;
-  max-width: 400px;
+  max-width: 600px;
   margin: 0 auto;
 }
+#portfolio .portfolio-item .portfolio-link img {
+	max-width: 100%;
+	max-height: auto;
+	object-fit: contain;
+	margin: 0 auto;
+}
 #portfolio .portfolio-item .portfolio-link .portfolio-hover {
-  background: rgba(254, 209, 54, 0.9);
+	background: rgba(39, 98, 139, 0.8); /*rgba(254, 209, 54, 0.9);*/
   position: absolute;
   width: 100%;
   height: 100%;
@@ -369,6 +386,13 @@ section h3.section-subheading {
   transition: all ease 0.5s;
   -webkit-transition: all ease 0.5s;
   -moz-transition: all ease 0.5s;
+}
+#portfolio .portfolio-item .portfolio-background {
+	background: rgba(110, 110, 110, 0.15); /*rgba(254, 209, 54, 0.9);*/
+	color: white;
+	position: absolute;
+	width: 100%;
+	height: 100%;
 }
 #portfolio .portfolio-item .portfolio-link .portfolio-hover:hover {
   opacity: 1;
@@ -391,7 +415,7 @@ section h3.section-subheading {
   margin: 0;
 }
 #portfolio .portfolio-item .portfolio-caption {
-  max-width: 400px;
+  max-width: 600px;
   margin: 0 auto;
   background-color: white;
   text-align: center;
