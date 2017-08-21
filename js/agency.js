@@ -28,13 +28,12 @@
 				spaceElem.animate({ marginBottom: '0px' }, 300);
 			} else {
 				hideeElem.last().fadeOut(300, function(){
-					spaceElem.css('marginBottom', listSpace);
+					//spaceElem.css('marginBottom', listSpace);
 				} );
-				/*
+				spaceElem.animate({ marginBottom: '-' + listSpace }, 290);
 				setTimeout(function(){
-					spaceElem.animate({ marginBottom: '100px' }, 50);
-				}, 250);
-*/
+					spaceElem.css('marginBottom', listSpace);
+				}, 295);
 			}
 			//$(this).closest('.timeline-heading').find('.list-hidee').last().fadeOut(300, 'linear');
 		});
