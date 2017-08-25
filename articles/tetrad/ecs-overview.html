@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Music List - Alex Khouderchah</title>
+    <title>Entity-Component-System - Overview</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -68,8 +68,8 @@
 	<header style="background-image:url('../../img/mods-bg.jpg');">
         <div class="container">
           <div class="intro-text">
-			<div class="intro-heading">Music List</div>
-			<div class="intro-lead-in">Some of my music recommendations</div>
+			<div class="intro-heading">Entity Component System</div>
+			<div class="intro-lead-in">Part 1 - Overview</div>
 <!--			<div class="intro-spacing"></div>
             <div class="intro-lead-in">/*&ensp; Software Engineer<br>Computer Scientist&ensp; */</div>
 
@@ -82,71 +82,31 @@
     <!-- Portfolio Grid Section -->
     <section id="portfolio" class="bg-light-gray">
       <div class="container">
-		<!--
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading">Custom Maps</h2>
-            <h3 class="section-subheading text-muted">Playable levels originally created during ages 13 - 15</h3>
-          </div>
-        </div>
-		-->
 		<div class="row">
-		  <div class="col-lg-4 text-center">
-			<h2>Classical</h2>
-			<h3 class="list-subheading list-first text-muted">Baroque Era</h3>
-			<a href="https://www.youtube.com/watch?v=zO8i5D2uz84">J.S. Bach - "Little" Fugue in G minor (BMW 578)</a>
-			<h3 class="list-subheading text-muted">Classical Era</h3>
-			<a href="https://www.youtube.com/watch?v=tT9gT5bqi6Y">Mozart - Sonata for Two Pianos in D (K. 448)</a>
-			<h3 class="list-subheading text-muted">Romantic Era</h3>
-			<a href="https://www.youtube.com/watch?v=Les39aIKbzE">Gustav Mahler - Symphony 5</a><br>
-			<a href="https://www.youtube.com/watch?v=NqW90QvPaKA">Rimsky-Korsakov - Scheherazade (Movement IV)</a>
-			<h3 class="list-subheading text-muted">Contemporary</h3>
-			<a href="https://www.youtube.com/watch?v=U-pVz2LTakM">Arnold Schönberg - Verklärte Nacht (Op. 4)</a>
-			<a href="https://www.youtube.com/watch?v=S8JxMvMFL4U">Dmitri Shostakovich - String Quartet No.7 (Op. 108)</a>
-			<h3 class="list-subheading text-muted">Opera</h3>
-			<a href="https://www.youtube.com/watch?v=jOIAi2XwuWo">Jessye Norman - When I Am Laid in Earth</a>
+		  <div class="col-lg-1">
 		  </div>
-		  <div class="col-lg-4 text-center">
-			<h2>Jazz</h2>
-			<h3 class="list-subheading list-first text-muted">Bebop</h3>
-			<h3 class="list-subheading text-muted">Bossa Nova</h3>
-			<h3 class="list-subheading text-muted">Modern</h3>
-			<a href="https://www.youtube.com/watch?v=wW_dYLcate4">Ryo Fukui - Early Summer</a><br>
-			<a href="https://www.youtube.com/watch?v=UkLfqKfCwCQ">Submotion Orchestra - Angel Eyes</a><br>
-			<a href="https://www.youtube.com/watch?v=5xGWUw8Oz8w">Joey Pecoraro - Tired Boy (Album)</a>
-			<h3 class="list-subheading text-muted">Smooth</h3>
-		  </div>
-		  <div class="col-lg-4 text-center">
-			<h2>Rock</h2>
-			<h3 class="list-subheading list-first text-muted">Indie</h3>
-			<a href="https://www.youtube.com/watch?v=bkctWjvwTc4">Turnover - Sunshine Type</a><br>
-			<a href="https://www.youtube.com/watch?v=MinoVJfuAAs">Last Dinosaurs - Honolulu</a>
-			<h3 class="list-subheading text-muted">Post-Rock</h3>
-			<a href="https://www.youtube.com/watch?v=9MKUV528_m8">CHON - Continue?</a><br>
-			<a href="https://www.youtube.com/watch?v=5fNhD_lP1F4">Plini - Selenium Forest</a>
-			<h3 class="list-subheading text-muted">Progressive Metal</h3>
-			<a href="https://www.youtube.com/watch?v=lbA3jxab4A0&index=1&list=PLH22-xSMERQpG4M9HshhXUJ9OKMNlwU8T">Animals As Leaders - Ka$cade</a>
-			<h3 class="list-subheading text-muted">Metal</h3>
-		  </div>
-		</div>
 
-		<div class="row">
-		  <div class="col-lg-4 text-center">
-			<h2>Ambient</h2>
-			<div class="list-subheading list-first text-muted"></div>
-			<a href="https://www.youtube.com/watch?v=hP9nIq4otVA">The Dead Texan - The Six Million Dollar Sandwich</a><br>
-			<a href="https://www.youtube.com/watch?v=9bJcvgxX6AY">Loscil - Holding Pattern</a><br>
-			<a href="https://www.youtube.com/watch?v=LmvdavHPdh8">Bonecold - Somniloquy</a><br>
-			<a href="https://www.youtube.com/watch?v=wRtGgQbZAxY">Chihei Hatakeyama - Bonfire On the Field</a><br>
-			<a href="https://www.youtube.com/watch?v=cIUnVO3tWfo">Eluvium - Indoor Swimming at the Space Station</a>
+		  <div class="col-lg-10">
+			<h2 class="section-heading text-center">What is it?</h2>
+			<p class="text-article">The Entity-Component-System&#8213;or ECS&#8213;pattern is a software architecture pattern that allows objects to be defined based on the <em>components</em> they contain. That is, objects are defined by <em>composition</em> (has-a relationships) as opposed to the <em>inheritence</em> that most object-oriented programmers are used to using.</p>
+
+			<h3 class="section-heading text-center">Summary</h3>
+			<p class="text-article">
+			  <ul>
+				<li>ECS is composed of three major parts
+				  <ul>
+					<li>Components, which </li>
+				  </ul>
+				</li>
+				<li>Test 2</li>
+			  </ul>
+			</p>
 		  </div>
-		  <div class="col-lg-4 text-center">
-			<h2>R & B</h2>
-		  </div>
-		  <div class="col-lg-4 text-center">
-			<h2>Electronic</h2>
+
+		  <div class="col-lg-1">
 		  </div>
 		</div>
+	  </div>
     </section>
 
     <footer>

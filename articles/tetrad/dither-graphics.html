@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Music List - Alex Khouderchah</title>
+    <title>Dithering in Graphics</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,6 +26,20 @@
 	<!-- TODO - REPLACE WITH MIN! -->
     <link href="../../css/agency.css" rel="stylesheet">
 	<link href="../../css/general.css" rel="stylesheet">
+
+	<!-- MathJax -->
+	<script type="text/javascript" async
+			src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+
+	<!-- code-prettify -->
+	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+	<style>
+	  li.L0, li.L1, li.L2, li.L3,
+	  li.L5, li.L6, li.L7, li.L8 {
+	  list-style-type: decimal !important;
+	  }
+	</style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -68,8 +82,8 @@
 	<header style="background-image:url('../../img/mods-bg.jpg');">
         <div class="container">
           <div class="intro-text">
-			<div class="intro-heading">Music List</div>
-			<div class="intro-lead-in">Some of my music recommendations</div>
+			<div class="intro-heading">Dithering in Graphics</div>
+			<div class="intro-lead-in">With a focus on GLSL</div>
 <!--			<div class="intro-spacing"></div>
             <div class="intro-lead-in">/*&ensp; Software Engineer<br>Computer Scientist&ensp; */</div>
 
@@ -82,71 +96,46 @@
     <!-- Portfolio Grid Section -->
     <section id="portfolio" class="bg-light-gray">
       <div class="container">
-		<!--
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading">Custom Maps</h2>
-            <h3 class="section-subheading text-muted">Playable levels originally created during ages 13 - 15</h3>
-          </div>
-        </div>
-		-->
 		<div class="row">
-		  <div class="col-lg-4 text-center">
-			<h2>Classical</h2>
-			<h3 class="list-subheading list-first text-muted">Baroque Era</h3>
-			<a href="https://www.youtube.com/watch?v=zO8i5D2uz84">J.S. Bach - "Little" Fugue in G minor (BMW 578)</a>
-			<h3 class="list-subheading text-muted">Classical Era</h3>
-			<a href="https://www.youtube.com/watch?v=tT9gT5bqi6Y">Mozart - Sonata for Two Pianos in D (K. 448)</a>
-			<h3 class="list-subheading text-muted">Romantic Era</h3>
-			<a href="https://www.youtube.com/watch?v=Les39aIKbzE">Gustav Mahler - Symphony 5</a><br>
-			<a href="https://www.youtube.com/watch?v=NqW90QvPaKA">Rimsky-Korsakov - Scheherazade (Movement IV)</a>
-			<h3 class="list-subheading text-muted">Contemporary</h3>
-			<a href="https://www.youtube.com/watch?v=U-pVz2LTakM">Arnold Schönberg - Verklärte Nacht (Op. 4)</a>
-			<a href="https://www.youtube.com/watch?v=S8JxMvMFL4U">Dmitri Shostakovich - String Quartet No.7 (Op. 108)</a>
-			<h3 class="list-subheading text-muted">Opera</h3>
-			<a href="https://www.youtube.com/watch?v=jOIAi2XwuWo">Jessye Norman - When I Am Laid in Earth</a>
+		  <div class="col-lg-1">
 		  </div>
-		  <div class="col-lg-4 text-center">
-			<h2>Jazz</h2>
-			<h3 class="list-subheading list-first text-muted">Bebop</h3>
-			<h3 class="list-subheading text-muted">Bossa Nova</h3>
-			<h3 class="list-subheading text-muted">Modern</h3>
-			<a href="https://www.youtube.com/watch?v=wW_dYLcate4">Ryo Fukui - Early Summer</a><br>
-			<a href="https://www.youtube.com/watch?v=UkLfqKfCwCQ">Submotion Orchestra - Angel Eyes</a><br>
-			<a href="https://www.youtube.com/watch?v=5xGWUw8Oz8w">Joey Pecoraro - Tired Boy (Album)</a>
-			<h3 class="list-subheading text-muted">Smooth</h3>
-		  </div>
-		  <div class="col-lg-4 text-center">
-			<h2>Rock</h2>
-			<h3 class="list-subheading list-first text-muted">Indie</h3>
-			<a href="https://www.youtube.com/watch?v=bkctWjvwTc4">Turnover - Sunshine Type</a><br>
-			<a href="https://www.youtube.com/watch?v=MinoVJfuAAs">Last Dinosaurs - Honolulu</a>
-			<h3 class="list-subheading text-muted">Post-Rock</h3>
-			<a href="https://www.youtube.com/watch?v=9MKUV528_m8">CHON - Continue?</a><br>
-			<a href="https://www.youtube.com/watch?v=5fNhD_lP1F4">Plini - Selenium Forest</a>
-			<h3 class="list-subheading text-muted">Progressive Metal</h3>
-			<a href="https://www.youtube.com/watch?v=lbA3jxab4A0&index=1&list=PLH22-xSMERQpG4M9HshhXUJ9OKMNlwU8T">Animals As Leaders - Ka$cade</a>
-			<h3 class="list-subheading text-muted">Metal</h3>
-		  </div>
-		</div>
 
-		<div class="row">
-		  <div class="col-lg-4 text-center">
-			<h2>Ambient</h2>
-			<div class="list-subheading list-first text-muted"></div>
-			<a href="https://www.youtube.com/watch?v=hP9nIq4otVA">The Dead Texan - The Six Million Dollar Sandwich</a><br>
-			<a href="https://www.youtube.com/watch?v=9bJcvgxX6AY">Loscil - Holding Pattern</a><br>
-			<a href="https://www.youtube.com/watch?v=LmvdavHPdh8">Bonecold - Somniloquy</a><br>
-			<a href="https://www.youtube.com/watch?v=wRtGgQbZAxY">Chihei Hatakeyama - Bonfire On the Field</a><br>
-			<a href="https://www.youtube.com/watch?v=cIUnVO3tWfo">Eluvium - Indoor Swimming at the Space Station</a>
+		  <div class="col-lg-10">
+			<h2 class="section-heading text-center">The Problem</h2>
+			<p class="text-article">Everything in computers, fundamentally, relies on 1s and 0s, and there are many phenomena that will be mysterious and cryptic if one forgets (or never truly understands in the first place) this fact. One very important result of the binary nature of computers is that continuous values simply do not exist. Floating point numbers can represent non-integral numbers, but they are still discrete, and the CS gods bestow many misfortunes on those who treat doubles as "essentially the real numbers". One would be best served by instead viewing numeric values in computers as representations of ranges. Integer value of 1? The actual number is anywhere in the range \([1, 2)\), and thus \(\mathtt{0\mathrm{x}00000001}\) in 2s complement represents \([1, 2)\), rather than 1.</p>
+			<img class="img-main" src="../../img/articles/dither-graphics/floatDiscrete.png" alt="">
+			<p class="text-caption">Figure 1: Single-precision floating-point values in \([1000.125, 1000.250]\)<br>
+			Note the gaps between values!&nbsp;&nbsp;<small>(figure made with <a href="https://github.com/Khouderchah-Alex/pyfloatviz">this</a>)</small></p>
+			<p class="text-article">You might be saying at this point, "Okay, that's cool I guess... but what does that have to do with the fact that the lighting in my game creates banding?". The problem is that the standard 24-bit "true color" representation of colors&#8213;which uses 8 bits for the red, green, and blue channels&#8213;is definitively not "essentially all of the colors". Take, for example, all the different shades of gray we can display using 24-bit color. This is the set \(\{(n, n, n)~|~0 \leq n \leq 255\}\), where the components of this 3-tuple represent the red, blue, and green channels, respectively. In short (or rather, in char), we have only 256 different shades of gray available to us. That means that a gradient from white to black over 1024 pixels will not actually look like a gradient, but will instead appear as 4-pixel bands of gray (which will give us <a href="https://en.wikipedia.org/wiki/Mach_bands">Mach bands</a> as an added bonus). Let's look at a small example to make this more concrete.</p>
+			<h3 class="section-heading text-center">Banding Example</h3>
+			<p class="text-article">Let's assume you have a program that displays a rectangle. It looks something like this:
+			  <img class="img-main" src="../../img/articles/dither-graphics/rectangle-no-gradient.png" alt="">
+			  Well that looks alright as far as plain gray rectangles go, but it's not winning any beauty pageants. Let's try having the rectangle fade to black as we move towards the bottom of the screen</p>
+
+			<pre><code class="prettyprint linenums">#version 330
+
+out vec4 outputColor;
+
+void main()
+{
+	vec4 texColor = gAddColor
+			+ gMultColor * texture(gSampler, vec2(texCoord0.s, texCoord0.t));
+
+	outputColor = mix(gTopMultiplier,
+				vec4(1, 1, 1, 1),
+				gl_FragCoord.y/960);
+}</code></pre>
+
+			<h2 class="section-heading text-center">The Solution</h2>
+			<h2 class="section-heading text-center">Summary</h2>
+			<p class="text-article">
+			</p>
 		  </div>
-		  <div class="col-lg-4 text-center">
-			<h2>R & B</h2>
-		  </div>
-		  <div class="col-lg-4 text-center">
-			<h2>Electronic</h2>
+
+		  <div class="col-lg-1">
 		  </div>
 		</div>
+	  </div>
     </section>
 
     <footer>
