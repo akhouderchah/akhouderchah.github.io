@@ -36,7 +36,7 @@
 
 </head>
 
-<body id="page-top" class="index">
+<body id="page-top" class="index bg-medium-gray bg-paper">
 
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
@@ -80,17 +80,25 @@
     </header>
 
     <!-- Portfolio Grid Section -->
-    <section id="portfolio" class="bg-light-gray">
+    <section id="portfolio">
       <div class="container">
 		<div class="row">
-		  <div class="col-lg-1">
-		  </div>
+		  <div class="col-lg-10 bg-light-gray" id="rightRef">
+			<h2 class="section-heading text-center"><br>Overview</h2>
+			<p class="text-article"> The Entity-Component-System&#8213;or ECS&#8213;pattern is a software architecture pattern where objects are defined by composition (has-a relationships) as opposed to inheritance (is-a relationships). Quite simply, objects are represented as <keyword name="entities">entities</keyword>, which have no functionality themselves. In fact, entities are often unsigned integers that merely serve as unique identifiers (UIDs). In order for an object to have functionality, <keyword name="components">components</keyword> must be attached to its entity. Components do not <em>implement</em> functionality, however, but rather store the relevant state. The actual implementation of functionality is provided by <keyword>systems</keyword>, which use the state provided by components. Thus for a single piece of functionality, the system contains the implementation and global state, while the components contain the per-object state. Let's look at a simple example in order to make this more concrete:</p>
+			<h4 class="section-heading text-center">Example</h4>
+			<p class="text-article">Suppose that you're building a game using the ECS pattern. In order to draw objects, we need to know:</p>
+			<ol class="text-article">
+			  <li>&nbsp;what to draw</li>
+			  <li>&nbsp;where to draw it</li>
+			</ol>
+			<p class="text-article">These two pieces of state correspond to our DrawComponent and TransformComponent, respectively. <asideLoc name="DrawVsTransform"></asideLoc></p>
 
-		  <div class="col-lg-10">
-			<h2 class="section-heading text-center">What is it?</h2>
-			<p class="text-article">The Entity-Component-System&#8213;or ECS&#8213;pattern is a software architecture pattern that allows objects to be defined based on the <em>components</em> they contain. That is, objects are defined by <em>composition</em> (has-a relationships) as opposed to the <em>inheritence</em> that most object-oriented programmers are used to using.</p>
+			<aside name="DrawVsTransform"><h4>Why not just a DrawComponent?</h4>While the code would still work if the DrawComponent contained both what to draw and where to draw it, this would not be a good design. Imagine what would happen later, if we needed to add 3D sounds to our game. Should we duplicate position/orientation/scale information in the SoundComponent? Should the SoundSystem use information from both the SoundComponent and the DrawComponent? Thinking carefully about what components to create and what they should contain can save a lot of headache in the long-run.</aside>
 
-			<h3 class="section-heading text-center">Summary</h3>
+			<h3 class="section-heading text-center">Why is this useful?</h3>
+			<h3 class="section-heading text-center">Why doesn't everyone use this?</h3>
+			<h2 class="section-heading text-center">Summary</h2>
 			<p class="text-article">
 			  <ul>
 				<li>ECS is composed of three major parts
@@ -103,7 +111,7 @@
 			</p>
 		  </div>
 
-		  <div class="col-lg-1">
+		  <div class="col-lg-2" id="leftRef">
 		  </div>
 		</div>
 	  </div>
@@ -122,11 +130,11 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+	<script src="../../js/jquery.easing.1.3.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script>
@@ -135,9 +143,9 @@
     <script src="js/jqBootstrapValidation.js"></script>
     <script src="js/contact_me.js"></script>
 
-    <!-- Theme JavaScript -->
+    <!-- Article JS -->
 	<!-- TODO - make min -->
-    <script src="js/agency.js"></script>
+	<script src="../../js/article.js"></script>
 
 </body>
 

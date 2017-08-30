@@ -105,27 +105,45 @@
 			<p class="text-article">Everything in computers, fundamentally, relies on 1s and 0s, and there are many phenomena that will be mysterious and cryptic if one forgets (or never truly understands in the first place) this fact. One very important result of the binary nature of computers is that continuous values simply do not exist. Floating point numbers can represent non-integral numbers, but they are still discrete, and the CS gods bestow many misfortunes on those who treat doubles as "essentially the real numbers". One would be best served by instead viewing numeric values in computers as representations of ranges. Integer value of 1? The actual number is anywhere in the range \([1, 2)\), and thus \(\mathtt{0\mathrm{x}00000001}\) in 2s complement represents \([1, 2)\), rather than 1.</p>
 			<img class="img-main" src="../../img/articles/dither-graphics/floatDiscrete.png" alt="">
 			<p class="text-caption">Figure 1: Single-precision floating-point values in \([1000.125, 1000.250]\)<br>
-			Note the gaps between values!&nbsp;&nbsp;<small>(figure made with <a href="https://github.com/Khouderchah-Alex/pyfloatviz">this</a>)</small></p>
+			Note the gaps between values&nbsp;&nbsp;<small>(figure made with <a href="https://github.com/Khouderchah-Alex/pyfloatviz">this</a>)</small></p>
 			<p class="text-article">You might be saying at this point, "Okay, that's cool I guess... but what does that have to do with the fact that the lighting in my game creates banding?". The problem is that the standard 24-bit "true color" representation of colors&#8213;which uses 8 bits for the red, green, and blue channels&#8213;is definitively not "essentially all of the colors". Take, for example, all the different shades of gray we can display using 24-bit color. This is the set \(\{(n, n, n)~|~0 \leq n \leq 255\}\), where the components of this 3-tuple represent the red, blue, and green channels, respectively. In short (or rather, in char), we have only 256 different shades of gray available to us. That means that a gradient from white to black over 1024 pixels will not actually look like a gradient, but will instead appear as 4-pixel bands of gray (which will give us <a href="https://en.wikipedia.org/wiki/Mach_bands">Mach bands</a> as an added bonus). Let's look at a small example to make this more concrete.</p>
 			<h3 class="section-heading text-center">Banding Example</h3>
-			<p class="text-article">Let's assume you have a program that displays a rectangle. It looks something like this:
+			<p class="text-article text-no-bottom">Let's assume you have a program that displays a rectangle. It looks something like this:
 			  <img class="img-main" src="../../img/articles/dither-graphics/rectangle-no-gradient.png" alt="">
-			  Well that looks alright as far as plain gray rectangles go, but it's not winning any beauty pageants. Let's try having the rectangle fade to black as we move towards the bottom of the screen</p>
+			<p class="text-caption">Figure 2: Solid gray rectangle<br>
+			  No undesired visual effects that are unexpected</p><br>
 
+			  The minimal fragment shader we need to do this could not be simpler:</p>
+			  <pre><code class="prettyprint linenums">#version 330
+
+out vec4 outputColor;
+
+void main()
+{
+	outputColor = vec4(.5, .5, .5, 1);
+}</code></pre>
+			<p class="text-article text-no-bottom">Well, that looks fine as far as plain gray rectangles go, but it's not winning any beauty pageants. Let's try having the rectangle fade to white as we move towards the top of the screen:
+			  <img class="img-main" src="../../img/articles/dither-graphics/rectangle-gradient.png" alt="">
+			<p class="text-caption">Figure 3: Rectangle with gradient<br>
+			  Look carefully, there is definite banding even in this simple example</p><br>
+
+			  Our minimal fragment shader is still very straightforward:</p>
 			<pre><code class="prettyprint linenums">#version 330
 
 out vec4 outputColor;
 
 void main()
 {
-	vec4 texColor = gAddColor
-			+ gMultColor * texture(gSampler, vec2(texCoord0.s, texCoord0.t));
-
-	outputColor = mix(gTopMultiplier,
-				vec4(1, 1, 1, 1),
-				gl_FragCoord.y/960);
+	/*
+	* We assume the viewport's height is 1024 pixels... please don't do this
+	* in real code!!!
+	*/
+	outputColor = mix(vec4(.5, .5, .5, 1),
+			  vec4(1, 1, 1, 1),
+			  gl_FragCoord.y/1024);
 }</code></pre>
 
+			<p class="text-article">The problem is that we don't get quite what we wanted. The fragment shader itself seems to suggest that a smooth gray gradient will be produced, but looking carefully at figure 3 shows bands of gray (which makes sense given what we know about 24-bit color representations). The question now is, what can we do in situations where this visual effect is undesirable?
 			<h2 class="section-heading text-center">The Solution</h2>
 			<h2 class="section-heading text-center">Summary</h2>
 			<p class="text-article">
