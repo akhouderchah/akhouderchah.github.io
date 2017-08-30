@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $(window).resize(refreshSides);
+	$(window).resize(function(){ refreshSides(); window.setTimeout(refreshSides, 100); });
 
   $('img').load(function() {
     refreshSides();
