@@ -202,11 +202,9 @@ aside h5,
 
 asideLoc::after {
 	content: "†";
-	/*font-size: 20px;*/
 	color: #444444;
 	vertical-align: super;
 	font-size: 13px;
-	/*color: #657b83;*/
 }
 
 .img-main {
