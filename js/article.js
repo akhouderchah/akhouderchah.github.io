@@ -21,6 +21,7 @@ function refreshSides() {
 		var name = $(this).attr("name");
 		var span = $("asideLoc[name='" + name + "']");
 		if (span == null) { return; }
+		//span.append("<sup>*</sup>");
 		$(this).css('top', span.position().top - 5);
 
 		// Ensure that this aside won't overlap with any others

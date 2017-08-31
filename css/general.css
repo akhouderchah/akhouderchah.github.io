@@ -135,11 +135,33 @@ section h6.section-subheading {
 	color: #c1a157;
 }
 
+.article-example {
+	padding: 10px 20px 10px 20px;
+	background-color: #dddddd;
+}
+.article-example h4.section-subheading {
+	text-transform: uppercase;
+	font-weight: 600;
+}
+.section-heading {
+	padding-top: 50px;
+	padding-bottom: 25px;
+}
+.section-line {
+	border-top-style: solid;
+	border-top-width: .1px;
+	border-top-color: #cccccc;
+}
+
 .text-article {
 	font-size: 16px;
 	font-weight: 500;
 	font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	margin-bottom: 25px;
+}
+.text-article li h4 {
+	text-transform: none;
+	font-weight: 500;
 }
 .text-no-bottom {
 	margin-bottom: 10px;
@@ -153,7 +175,9 @@ keyword {
 	/*font-style: italic;*/
 	font-weight: 600;
 }
-aside {
+aside,
+ul li aside,
+ul.text-article li aside{
 	/*position: absolute;*/
 	margin: 0 auto;
 	background: /*#1c4563*/#fdf6e3;
@@ -162,14 +186,27 @@ aside {
 	padding-right: 5px;
 	padding-bottom: 5px;
 	font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
 	border-color: #eee8d5;
 	border-style: solid;
 	border-width: 1px;
 	border-radius: 1px;
 }
 aside h4,
-aside h5 {
+aside h5,
+.text-article aside h4,
+.text-article aside h5 {
+	font-weight: 600;
 	text-transform: none;
+}
+
+asideLoc::after {
+	content: "†";
+	/*font-size: 20px;*/
+	color: #444444;
+	vertical-align: super;
+	font-size: 13px;
+	/*color: #657b83;*/
 }
 
 .img-main {

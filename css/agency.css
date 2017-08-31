@@ -700,7 +700,7 @@ footer ul.quicklinks {
 ul.social-buttons {
   margin-bottom: 0;
 }
-ul.social-buttons li a {
+ul.social-buttons li a{
   display: block;
   background-color: #222222;
   height: 40px;
@@ -716,7 +716,7 @@ ul.social-buttons li a {
 }
 ul.social-buttons li a:hover,
 ul.social-buttons li a:focus,
-ul.social-buttons li a:active {
+ul.social-buttons li a:active{
   background-color: #fed136;
 }
 .btn:focus,
