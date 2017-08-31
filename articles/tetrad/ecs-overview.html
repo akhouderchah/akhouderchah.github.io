@@ -129,7 +129,11 @@ pDraw->SetTexture(TEXTURE_PATH + "Background.tga", TextureType::RGB);
 				  <p class="text-article text-no-bottom">Some developers seem convinced that the standard OOP methodology is The One True Way of Programming&trade;. While there are certainly use-cases where classes and inheritance bring great benefits for the clarity and manageability of code, inheritance can also bring unnecessary complexity without providing many benefits.</p>
 				  <div class="article-example">
 					<h4 class="section-subheading text-center">Example</h4>
-
+					<p class="text-article text-no-bottom">Imagine you're building a game where objects are defined through in the traditional OOP style, and at some point your enemy/player class hierarchy looks like this:</p>
+					<img class="img-main" src="../../img/articles/ecs-overview/enemy-inheritance.png" alt="">
+					<p class="text-caption">Figure 2: Class hierarchy for enemies and players</p>
+					<p class="text-article">At some point in development&#8213;perhaps while working on an underwater level&#8213;you decide that bandit diver enemies would be a nice addition to your game. Unfortunately, inheriting from both the BanditEnemy and DiverEnemy classes would result in the <a href="https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem">diamond of death</a> (or perhaps your language of choice doesn't even support multiple inheritance to begin with!).</p>
+					<p class="text-article">Okay... so maybe it's time to restructure the class hierarchy so that the game can have enemies that can be on both land and sea without needing to deal with multiple inheritance. You quickly notice, however, that much of an enemy's functionality (where and how it can move, how it attacks, etc) depends on whether it is a sea or land enemy. You could resort to duplicating code, but that would defeat the purpose of using inheritance in the first place! Another option is to push all of that functionality into the BaseEnemy class and allow child classes to pick and choose which pieces of functionality to use. But</p>
 				  </div>
 				</div>
 			  </li>
