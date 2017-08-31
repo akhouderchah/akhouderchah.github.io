@@ -125,7 +125,7 @@ pDraw->SetTexture(TEXTURE_PATH + "Background.tga", TextureType::RGB);
 			<h3 class="section-heading section-line text-center">Why is this useful?</h3>
 			<ul class="text-article">
 			  <li><h4>Inheritance is not always the best way to represent relationships</h4>
-				<div style="padding-left: 50px">
+				<div class="text-indented">
 				  <p class="text-article text-no-bottom">Some developers seem convinced that the standard OOP methodology is The One True Way of Programming&trade;. While there are certainly use-cases where classes and inheritance bring great benefits for the clarity and manageability of code, inheritance can also bring unnecessary complexity without providing many benefits.</p>
 				  <div class="article-example">
 					<h4 class="section-subheading text-center">Example</h4>
@@ -133,22 +133,24 @@ pDraw->SetTexture(TEXTURE_PATH + "Background.tga", TextureType::RGB);
 					<img class="img-main" src="../../img/articles/ecs-overview/enemy-inheritance.png" alt="">
 					<p class="text-caption">Figure 2: Class hierarchy for enemies and players</p>
 					<p class="text-article">At some point in development&#8213;perhaps while working on an underwater level&#8213;you decide that bandit diver enemies would be a nice addition to your game. Unfortunately, inheriting from both the BanditEnemy and DiverEnemy classes would result in the <a href="https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem">diamond of death</a> (or perhaps your language of choice doesn't even support multiple inheritance to begin with!).</p>
-					<p class="text-article">Okay... so maybe it's time to restructure the class hierarchy so that the game can have enemies that can be on both land and sea without needing to deal with multiple inheritance. You quickly notice, however, that much of an enemy's functionality (where and how it can move, how it attacks, etc) depends on whether it is a sea or land enemy. You could resort to duplicating code, but that would defeat the purpose of using inheritance in the first place! Another option is to push all of that functionality into the BaseEnemy class and allow child classes to pick and choose which pieces of functionality to use. But</p>
+					<p class="text-article">Okay... maybe it's time to restructure the class hierarchy so that the game can have enemies that can be on both land and sea without needing to deal with multiple inheritance. You quickly notice, however, that much of an enemy's functionality (where and how it can move, how it attacks, etc) depends on whether it is a sea or land enemy. You could resort to duplicating code, but that would defeat the purpose of using inheritance in the first place! Another option is to push all of that functionality into the BaseEnemy class and allow child classes to pick and choose which pieces of functionality to use. But then your BaseEnemy class would actually be a HodgePodgeOfEverythingEnemy class, and as the game becomes larger and more complex, that one class will end up being the source of many bugs and many, many wasted hours.</p>
+					<p class="text-article">Now consider the case of using ECS. A SwimmableComponent could be attached to entities that represent sea enemies, while a WalkableComponent could be attached to entities that represent land enemies. In fact, now that the game is using <asideLoc name="composition">components</asideLoc>, you can have scenarios where regular bandit enemies put on diving suits (an act which will attach SwimmableComponents to their entities at runtime) and follow players underwater! There are still some difficulties (for example, designing the different systems that use Swimmable and Walkable components to properly handle the case where an entity has both components at the same time), but game as a whole is now structured in a manner that supports new functionality, rather than being tied down to what the game currently does.</p>
+					<aside name="composition"><h4>Composition without ECS</h4>While later points describe ECS-specific benefits, the ability to side-step inheritance issues like that in the example can be achieved without ECS. One alternative solution is to have the BaseEnemy class contain a Controller* member, where child Enemy classes choose from a number of virtually-inherited Controller child classes that provide unique AI/animation/etc functionality. This conceptually serves as a limited form of ECS, where all enemies can have up to one "component" from a set of available "components".</aside>
 				  </div>
 				</div>
 			  </li>
 			  <li><h4>ECS allows for runtime modification of object structures</h4>
-				<div style="padding-left: 50px">
+				<div class="text-indented">
 				  <p class="text-article">When objects are defined with classes, the structure of that object is more-or-less fixed at compile-time. With ECS, components can be added and removed from entities at runtime, which allows for greater flexibility in terms of what an object can do.</p>
 				</div>
 			  </li>
 			  <li><h4>Allows for external definitions of objects</h4>
-				<div style="padding-left: 50px">
+				<div class="text-indented">
 				  <p class="text-article">Along a similar line of thought as the previous point, the definition of objects no longer has to be within the source code, since objects can simply be created at runtime. This brings a number of benefits. Firstly, changing the properties of an object no longer requires a recompliation (one could even have hot-swapping functionality, so that a running executable can load changes without restarting), which can lead to much tighter iteration cycles. Also, making the definition of objects data instead of code allows for non-technical team members to make changes that would otherwise require the modification of code. For example, a game designer who wants a certain enemy to be able to swim can simply add an existing SwimmableComponent to the enemy's entity definition without any changes to the code (of course, if no SwimmableComponent existed, then that would have to be programmed).</p>
 				</div>
 			  </li>
 			  <li><h4>Can provide excellent decoupling of functionality</h4>
-				<div style="padding-left: 50px">
+				<div class="text-indented">
 				  <!-- TODO - LINK WHEN PART3 IS MADE -->
 				  <p class="text-article">When some forethought is put into the design of systems and components (which will be discussed in part 3 of this article series), the development of separate pieces of functionality is generally independent. The merits of decoupling are multitudinous and well-studied, with some key points being a greater clarity of code and improved ease of spliting up work between multiple developers.</p>
 				</div>
@@ -157,15 +159,18 @@ pDraw->SetTexture(TEXTURE_PATH + "Background.tga", TextureType::RGB);
 			<h3 class="section-heading section-line text-center">Why doesn't everyone use this?</h3>
 			<ul class="text-article">
 			  <li><h4>Not all projects need the provided benefits</h4>
-				<div style="padding-left: 50px">
+				<div class="text-indented">
 				  <p class="text-article">Building ECS into a project takes time, especially if performance and/or multithreading is a concern, and it is ultimately something that adds <asideLoc name="complexity">complexity</asideLoc> to the project. When creating a small game, for example, many of the benefits of ECS&#8213;and many of the downfalls of alternative architectures&#8213;will not be apparent, and therefore it makes no sense to spend the time developing, testing, and debugging the framework providing ECS functionality.</p>
 				</div>
 				<aside name="complexity"><h4>On Complexity</h4>Complexity is not always a bad thing, especially when that complexity is used to make the rest of the project simpler or easier to develop. Software engineering, just like all other forms of engineering, is about tradeoffs. Complexity cannot always be eliminated, but it can at least be strategically placed.</aside>
 			  </li>
-			  <li><h4>Performance overheads</h4>
+			  <li><h4>Performance/space overheads</h4>
+				<div class="text-indented">
+				  <p class="text-article">Predicting the performance effects of one software engineering solution to another is a tricky business indeed, and most performance predictions ought to be subject to the maxim "it's false until it's profiled". That being said, there really are no free lunches. Using ECS will impose some amount of performance and space overhead. One could almost always (embedded programming aside) build an ECS framework to meet their performance and space needs, but&#8213;as mentioned in the previous point&#8213;doing so is not always worth the effort. When it is worth the effort, however, there are a number of tricks that can eliminate many of the overheads associated with naïve ECS framework implemenations. Part 2 of this article series, which discusses implementing ECS frameworks, will touch on various performance details.</p>
+				  </div>
 			  </li>
 			  <li><h4>Developer unfamiliarity with the concept</h4>
-				<div style="padding-left: 50px">
+				<div class="text-indented">
 				  <p class="text-article">Building applications and games using the ECS pattern is not necessarily any more difficult than it would be under different architectures&#8213;it can actually be much easier if ECS is right for the project&#8213;but it certainly is a different way of developing. There will always be some amount of resistance to ideas that are unfamiliar, and for small projects or projects with tight schedules, the initial decrease in productivity while developers get up to speed might not be worth it.</p>
 				</div>
 			  </li>
@@ -182,6 +187,7 @@ pDraw->SetTexture(TEXTURE_PATH + "Background.tga", TextureType::RGB);
 				</li>
 				<li>The ECS architecture can provide a number of benefits, such as decoupling and external definition of objects, but it is not right for every project. One should consider the pros and cons for their particular project before deciding whether or not to use ECS</li>
 			  </ul>
+			  <br>
 			</p>
 		  </div>
 
