@@ -88,14 +88,17 @@ section h6.section-subheading {
 	margin-top: 50px;
 }
 
+.list-hidee > h5.list-subheading {
+	line-height: 225%;
+	margin-bottom: 0;
+	margin-top: 0;
+}
 .list-hidee {
 	text-align: center;
-	display: none;
 }
-@media screen and (min-width: 48em){
+@media screen and (min-width: 1200px){
 	.list-hidee {
 		text-align: right;
-		display: block;
 	}
 	.list-hidee.list-left {
 		text-align: left;
@@ -103,6 +106,7 @@ section h6.section-subheading {
 }
 
 .list-spacer {
+	display: none;
 	margin-bottom: 20px;
 }
 @media (min-width: 768px) {
