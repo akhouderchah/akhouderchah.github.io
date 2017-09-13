@@ -103,6 +103,9 @@ section h6.section-subheading {
 	.list-hidee.list-left {
 		text-align: left;
 	}
+	.list-center .list-hidee {
+		text-align: center;
+	}
 }
 
 .list-spacer {

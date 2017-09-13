@@ -5,7 +5,7 @@
 
     $(document).ready(function() {
 		var prevScroll = 0;
-		var listSpace = $('.list-spacer').css('margin-bottom');
+		//var listSpace = $('.list-spacer').css('margin-bottom');
         $(window).scroll(function() {
             if ($(this).scrollTop() > 500) {
 				if(prevScroll <= 500) {
@@ -19,13 +19,13 @@
 
 		if ($(document).width() < 1200){
 			$(".list-hider").each(function() {
-				$(this).closest('.timeline-heading').find('.list-hidee').removeClass("in");
+				$(this).parent().find('.list-hidee').removeClass("in");
 			})
 		}
 
 		$('.list-hider').click(function(){
-			var hideeElem = $(this).closest('.timeline-heading').find('.list-hidee');
-			var spaceElem = $(this).closest('.timeline-heading').find('.list-spacer');
+			var hideeElem = $(this).parent().find('.list-hidee');
+			//var spaceElem = $(this).closest('.timeline-heading').find('.list-spacer');
 			hideeElem.collapse('toggle');
 		});
     });
