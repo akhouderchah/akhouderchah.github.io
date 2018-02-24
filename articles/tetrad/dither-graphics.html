@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -104,7 +104,7 @@
 			<img class="img-main" src="../../img/articles/dither-graphics/floatDiscrete.png" alt="">
 			<p class="text-caption">Figure 1: Single-precision floating-point values in \([1000.125, 1000.250]\)<br>
 			Note the gaps between values&nbsp;&nbsp;<small>(figure made with <a href="https://github.com/Khouderchah-Alex/pyfloatviz">this</a>)</small></p>
-			<p class="text-article">You might be saying at this point, "Okay, that's cool I guess... but what does that have to do with the fact that the lighting in my game creates banding?". The problem is that the standard 24-bit "true color" representation of colors&#8213;which uses 8 bits for the red, green, and blue channels&#8213;is definitively not "essentially all of the colors". Take, for example, all the different shades of gray we can display using 24-bit color. This is the set \(\{(n, n, n)~|~0 \leq n \leq 255\}\), where the components of this 3-tuple represent the red, blue, and green channels, respectively. In short (or rather, in char), we have only 256 different shades of gray available to us. That means that a gradient from white to black over 1024 pixels will not actually look like a gradient, but will instead appear as 4-pixel bands of gray (which will give us <a href="https://en.wikipedia.org/wiki/Mach_bands">Mach bands</a> as an added bonus). Let's look at a small example to make this more concrete.</p>
+			<p class="text-article">You might be saying at this point, "Okay, that's cool I guess... but what does that have to do with the fact that the lighting in my game creates banding?". The problem is that the standard 24-bit "true color" representation of colors&#8213;which uses 8 bits for the red, green, and blue channels&#8213;is definitively not "essentially all of the colors". Take, for example, all the different shades of gray we can display using 24-bit color. This is the set \(\{(n, n, n)~|~0 \leq n \leq 255\}\), where the components of this 3-tuple represent the red, blue, and green channels, respectively. In short (or rather, in char), we have only 256 different shades of gray available to us. While this is 206 more shades of gray than many readers of romance novels might be used to, problems can still arise. With just 256 shades of gray, a gradient from white to black over 1024 pixels will not actually look like a gradient, but will instead appear as 4-pixel bands of gray (which will give us <a href="https://en.wikipedia.org/wiki/Mach_bands">Mach bands</a> as an added bonus). Let's look at a small example to make this more concrete.</p>
 			<div class="article-example">
 			<h4 class="section-subheading text-center">Banding Example</h4>
 			<p class="text-article text-no-bottom">Let's assume you have a program that displays a rectangle. It looks something like this:</p>
@@ -143,6 +143,9 @@ void main()
 }</code></pre>
 
 			<p class="text-article">The problem is that we don't get quite what we wanted. The fragment shader itself seems to suggest that a smooth gray gradient will be produced, but looking carefully at figure 3 shows bands of gray (which makes sense given what we know about 24-bit color representations).</p>
+            <p class="text-article text-no-bottom">This also isn't a problem that just affects novice programmers. If you open up Steam, you might see something like this on the right side of the application:</p>
+                <img class="img-main" src="../../img/articles/dither-graphics/steam-dither.png" alt="" />
+            <p class="text-caption">Figure 4: You guessed it, more banding!</p>
 			</div>
 			<p class="text-article text-no-bottom"><br>The question now is, what can we do in situations where this visual effect is undesirable?</p>
 			<h2 class="section-heading text-center">The Solution</h2>
