@@ -1,6 +1,10 @@
 (function($) {
   "use strict"; // Start of use strict
 
+  function toggleNight() {
+    document.body.classList.toggle("night-mode");
+  }
+
   $(document).ready(function() {
 	  $(window).resize(function(){ refreshSides(); window.setTimeout(refreshSides, 100); });
 
@@ -14,15 +18,20 @@
       });
     }
 
+    // Nice for developing at night so refreshes stay in night mode.
+    if (location.hash == '#night') {
+      toggleNight();
+    }
+
     var prevScroll = 0;
 	  //var listSpace = $('.list-spacer').css('margin-bottom');
     $(window).scroll(function() {
-      if ($(this).scrollTop() > 400) {
-        if(prevScroll <= 400) {
-			    $('.top-only-show').fadeOut(300, 'linear');
+      if ($(this).scrollTop() > 300) {
+        if(prevScroll <= 300) {
+			    $('.top-only-show').fadeOut(200, 'linear');
 		    }
-      } else if(prevScroll > 400) {
-        $('.top-only-show').fadeIn(400, 'easeInCubic');
+      } else if(prevScroll > 300) {
+        $('.top-only-show').fadeIn(300, 'easeInCubic');
       }
       prevScroll = $(this).scrollTop();
     })
@@ -34,6 +43,10 @@
         scrollTop: ($($anchor.attr('href')).offset().top - 50)
       }, 1250, 'easeInOutExpo');
       event.preventDefault();
+    });
+
+    $('.night-toggle').bind('click', function(event) {
+      toggleNight();
     });
 
     window.setTimeout(refreshSides, 200);

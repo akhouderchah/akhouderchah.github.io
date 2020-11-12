@@ -233,3 +233,46 @@ pre code {
 	color: #777777; /* Line number colors */
 	text-align: left;
 }
+
+.text-button {
+    width: 50%;
+    border: none;
+    outline: none;
+}
+
+.night-mode {
+    background-color: #141414;
+    color: #93a1a1;
+}
+.night-mode.bg-paper {
+	background-image: url("../../img/map-image-night.png");
+}
+.night-mode #portfolio a {
+	  color: #c1a157;
+}
+.night-mode #portfolio a:hover,
+.night-mode #portfolio a:focus,
+.night-mode #portfolio a:active,
+.night-mode #portfolio a.active {
+    color: #9c6868;
+}
+.night-mode .bg-light-gray {
+    background-color: #00252e;
+    color: #93a1a1;
+}
+.night-mode .article-example {
+    background-color: #091921;
+    color: #93a1a1;
+}
+.night-mode .text-button {
+    background-color: #00252e;
+    color: #93a1a1;
+}
+.night-mode ::-moz-selection {
+    text-shadow: none;
+    background: #909cb6;
+}
+.night-mode ::selection {
+    text-shadow: none;
+    background: #909cb6;
+}
