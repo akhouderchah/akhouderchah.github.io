@@ -1,0 +1,599 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Alex Khouderchah">
+
+    <title>Amlang: The Self-Leveraging Metasystem</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Theme CSS -->
+    <!-- TODO - REPLACE WITH MIN! -->
+    <link href="../../css/agency.css" rel="stylesheet">
+    <link href="../../css/general.css" rel="stylesheet">
+
+    <!-- MathJax -->
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <!-- code-prettify -->
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <style>
+      li.L0, li.L1, li.L2, li.L3,
+      li.L5, li.L6, li.L7, li.L8 {
+          list-style-type: decimal !important;
+      }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY" crossorigin="anonymous"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
+        <![endif]-->
+
+         </head>
+
+  <body id="page-top" class="index bg-medium-gray bg-paper">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top page-scroll top-only-show">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+          </button>
+          <a class="top-unhidden" href="../../index.html">Alex Khouderchah</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="hidden">
+              <a href="#page-top"></a>
+            </li>
+            <li>
+              <a class="page-scroll" href="../../articles.html">Articles</a>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+
+    <header style="background-image:url('../../img/header-bg.jpg');">
+      <div class="container">
+        <div class="intro-text">
+          <div class="intro-lead-in">Amlang: The Self-Leveraging Metasystem</div>
+      </div>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+      <div class="container">
+        <div class="row">
+          <p class="text-article" style="font-size: 13px">v1.0 - Published 28 Oct 2021</p>
+          <center>
+          <button type="button" class="text-article text-button night-toggle" style="text-align: center">
+              <span class="sr-only">Toggle navigation</span> Toggle Night Mode&nbsp;
+              <i class="fa fa-moon-o"></i>
+          </button>
+          </center>
+          <div class="col-lg-12 bg-light-gray" id="rightRef">
+            <h3 class="section-heading text-center">Overview</h3>
+            <p class="text-article">
+              This article describes the central concepts behind the Amlang
+              project by presenting a few interrelated models of it. Most
+              fundamentally, Amlang is an embodiment of the notion that models
+              are contextually useful lenses of reality, rather than reality
+              itself.
+            </p>
+
+            <h3 class="section-heading text-center">Models</h3>
+            <p class="text-article text-no-bottom">
+              A <keyword>model</keyword> is the product
+              of <a href="https://en.wikipedia.org/wiki/Abstraction">abstraction</a>;
+              that is, a model represents the details of some phenomenon to
+              *not* ignore. In a reality of immense complexity and detail,
+              models are an essential element of cognition for agents with
+              limited energy, information, computational power, and time, such
+              as ourselves. Inherently discarding information, models are not
+              reality itself, but hopefully embody some essence of reality. A
+              model is useful in contexts where the essence of reality it
+              embodies permits or enhances insight. Some examples of models are:
+              <ul class="text-article">
+                <li><a href="https://en.wikipedia.org/wiki/Wave%E2%80%93particle_duality">Wave-particle
+                    duality</a>, which is synthesized from the component models
+                  of <a href="https://en.wikipedia.org/wiki/Wave">wave</a>
+                  and <a href="https://en.wikipedia.org/wiki/Particle">particle</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Vector_space">Vector
+                    spaces</a>, or more
+                  broadly, <a href="https://en.wikipedia.org/wiki/Algebraic_structure">algebraic
+                    structures</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Biological_organisation">Biological
+                    organization</a> and all component models (such
+                  as <a href="https://en.wikipedia.org/wiki/Organism">organism</a>
+                  and <a href="https://en.wikipedia.org/wiki/Cell_(biology)">cell</a>)</li>
+                <li>The idea of a hammer</li>
+                <li>The idea of a model, which we are developing in this section</li>
+              </ul>
+            </p>
+
+            <p class="text-article">
+              Indeed, the author's personal philosophy of mind considers the
+              mind as models all the way down&#8213;even if models are not
+              always explicitly represented, consciously developed, or
+              consciously available&#8213;although the reader need not share
+              this view. Another way to look at models is to consider them as
+              lenses. One can view some aspect of reality through the use of
+              such a lens; in doing so, much information will be projected away,
+              but hopefully the information which remains will capture an
+              essence of reality that facilitates analysis. From this
+              perspective, we might build a model
+              of <keyword>extremism</keyword> as the treatment of a particular
+              model or set of models as reality itself, rather than simply a
+              lens.
+            </p>
+
+            <div class="article-example">
+              <h5 class="text-center" style="text-transform: none">Aside: On Extremism</h5>
+              <p class="text-article">
+                Extremism, as defined above, may seem peculiarly common amongst
+                humans. One useful model here is the biological imperative for
+                energy conservation. Evolutionarily, conserving energy when
+                immediate needs are satisfied is sensible; factors like the
+                variable availability of food sources and the energy cost & life
+                risk of attempting to acquire such food makes preservation of
+                existing energy a valuable and
+                potentially <a href="https://en.wikipedia.org/wiki/Evolutionarily_stable_strategy">stable</a>
+                evolutionary strategy.
+              </p>
+              <p class="text-article">
+                In the context of cognition, the reuse of existing models tends
+                to be much more energetically favorable than the critical
+                analysis & modification of existing models and the creation of
+                new&#8213;potentially more contextually suitable&#8213;models.
+                The result of strongly preferring the use of existing models,
+                beyond the region required to avoid excessive credulity, is a
+                tendency towards extremism and a pigeonholing of reality into
+                the familiar. In this sense, extremism is an expression of a
+                biological imperative which may have outlived its usefulness to
+                the point of active detriment (although many political
+                organizations throughout history have benefited themselves
+                through the exploitation of model reuse on societal scales).
+              </p>
+              <p class="text-article">
+                Energy conservation expressed as an overbearing tendency for
+                model reuse is a clear example in which AI should not seek to
+                slavishly reproduce the biological intelligence that precedes
+                it. With that said, the situation is not hopeless for us humans.
+                The biological imperative for energy conservation will always be
+                a part of us, yes, but with a conscious awareness, one can
+                choose to rage against that particular aspect of our nature and
+                seek liberation from the self-constructed shackles of the
+                familiar and comfortable.
+              </p>
+            </div>
+            <p class="text-article"></p>
+
+            <h3 class="section-heading text-center">Models of Amlang</h3>
+            <p class="text-article text-no-bottom">
+              Here we present Amlang through the models of:
+            </p>
+            <ul class="text-article">
+              <li>A self-intersecting language system
+              <li>An embodiment of the interrelated nature of structure and semantics
+              <li>A self-leveraging metasystem
+            </ul>
+            <br>
+
+            <h4 class="text-center" style="text-transform: none">Self-Intersecting Language System</h4>
+            <p class="text-article">
+              In modern programming paradigms, a general language system is
+              often constrained and intersected with a
+              specific <a href="https://en.wikipedia.org/wiki/Formal_system">formal
+              system</a> to enable more sophisticated behavior on the part of
+              the language system. We quickly explore some existing examples,
+              neglecting many details beyond this model for the sake of brevity.
+            </p>
+            <div class="article-example">
+              <h5 class="text-center" style="text-transform: none">Typed Languages</h5>
+              <p class="text-article">
+                An untyped language can be seen as a set of primitive operations
+                and a means of combining & abstracting operations to perform
+                some task. Programmers determine how this combination occurs and
+                the language system complies; the programmers' word is gospel
+                and the language system mostly performs semantics-preserving
+                program transformations.
+                A <a href="https://en.wikipedia.org/wiki/Type_system">type
+                system</a> can be seen as enabling deeper analysis of the code
+                through some form
+                of <a href="https://en.wikipedia.org/wiki/Type_theory">type
+                theory</a>, viewing the program through the lens of types
+                and <a href="https://en.wikipedia.org/wiki/Type_rule">type
+                rules</a>. Practical type systems must necessarily either
+                discard information or constrain the language to side-step
+                the <a href="https://en.wikipedia.org/wiki/Halting_problem">halting
+                problem</a>, but nonetheless enable a language system to catch
+                sets of semantic errors on their own by intersecting the set of
+                valid untyped programs with the set of valid type constructions.
+              </p>
+            </div>
+            <p class="text-article"></p>
+            <div class="article-example">
+              <h5 class="text-center" style="text-transform: none">OWL</h5>
+              <p class="text-article">
+                <a href="https://en.wikipedia.org/wiki/Web_Ontology_Language">OWL</a>
+                is a language which allows both for the representation of
+                knowledge (like, say, a cat is an animal) and the inference of
+                knowledge (a cat is an organism, since a cat is an animal and
+                animals are organisms). Crucially, the inferential capabilities
+                of OWL are centered around operations on sets. Classes either
+                implicitly or explicitly represent a set of instances, and in
+                this way, inference in OWL is ultimately enabled by committing
+                to a dichotomy of class and instance. Pigeonholing reality into
+                the model of class-vs-instance is a clear example of extremism,
+                and indeed, a major difficulty
+                of <a href="https://en.wikipedia.org/wiki/Ontology_engineering">ontology
+                engineering</a> in OWL is determining how to structure knowledge
+                within the class/instance dichotomy.
+              </p>
+            </div>
+            <p class="text-article"></p>
+            <div class="article-example">
+              <h5 class="text-center" style="text-transform: none">SQL</h5>
+              <p class="text-article">
+                Within the model of language system intersected with formal
+                system, much of the OWL section applies here, despite the many
+                differences between the two systems. Rather than asserting the
+                class-instance dichotomy to enable set operations, relational
+                databases assert
+                the <a href="https://en.wikipedia.org/wiki/Relational_model">relational
+                model</a> of data&#8213;where data is represented
+                as <a href="https://en.wikipedia.org/wiki/Tuple">tuples</a>&#8213;to
+                perform <a href="https://en.wikipedia.org/wiki/Relational_algebra">relational
+                algebra</a> on sets of tuples
+                (called <a href="https://en.wikipedia.org/wiki/Relation_(database)">relations</a>).
+              </p>
+            </div>
+            <p class="text-article"></p>
+            <div class="article-example">
+              <h5 class="text-center" style="text-transform: none">Differential Programming</h5>
+              <p class="text-article">
+                In <a href="https://en.wikipedia.org/wiki/Differentiable_programming">differentiable
+                programming</a> systems (like the
+                popular <a href="https://en.wikipedia.org/wiki/TensorFlow">TensorFlow</a>
+                and <a href="https://en.wikipedia.org/wiki/PyTorch">PyTorch</a>
+                libraries), the constraint imposed is for all operations to be
+                differentiable, which enables the system to
+                perform <a href="https://en.wikipedia.org/wiki/Automatic_differentiation">automatic
+                differentiation</a> of procedural constructions (often
+                specifically implementing
+                the <a href="https://en.wikipedia.org/wiki/Backpropagation">backpropagation</a>
+                algorithm). This is used in the context of modern machine
+                learning because the vast majority of
+                mainstream <a href="https://en.wikipedia.org/wiki/Artificial_neural_network">ANN</a>
+                systems are trained using learning algorithms based
+                on <a href="https://en.wikipedia.org/wiki/Gradient_descent">gradient
+                descent</a>.
+              </p>
+            </div>
+            <p class="text-article"></p>
+
+            <p class="text-article">
+              Unlike these systems, Amlang does not come pre-intersected with a
+              specific formal system. Instead, it provides a general language
+              system within which formal systems can be created and intersected;
+              clients could use Amlang to develop their own type
+              system/inference engine/automatic differentiation engine/object
+              system/etc, which could then be intersected with Amlang (at least
+              within some context). A more detailed look into how this is done
+              must be deferred to a future article of Amlang's architecture, but
+              even this conceptual view leads to the idea that creating such a
+              general system makes more explicit the interrelated nature of
+              structure and semantics.
+            </p>
+
+            <br>
+            <h4 class="text-center" style="text-transform: none">Interrelated Structure and Semantics</h4>
+            <p class="text-article">
+              Let us consider the simple structure of
+              an <a href="https://en.wikipedia.org/wiki/Ordered_pair">ordered
+              pair</a> (in
+              the <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)">Lisp</a>
+              world called
+              a <a href="https://en.wikipedia.org/wiki/Cons">cons</a>). The pair
+              (a . b) could mean that a & b are synonyms, antonyms, key-value
+              pairs (as
+              in <a href="https://en.wikipedia.org/wiki/Association_list">alists</a>),
+              function-argument pairs, or anything else. Structure alone has no
+              semantics; structure <b>plus context</b> creates meaning
+              (sometimes expressed as data + context = information). What, then,
+              happens when the context itself is represented as structure? In a
+              sense, this
+              is <a href="https://en.wikipedia.org/wiki/Reification_(computer_science)">reifying</a>
+              a model of semantics, but in another sense, the structure
+              representing semantics still needs context of its own in order to
+              indeed represent semantics; this can't simply
+              be <a href="https://en.wikipedia.org/wiki/Turtles_all_the_way_down">turtles
+              all the way down</a>!
+            </p>
+            <p class="text-article">
+              Ultimately, some base interpreter&#8213;often represented as
+              machine code&#8213;serves as a base case here. As a base case,
+              semantics cannot be reified and instead the context of structures
+              is implicit. A useful model of compilation is as a collapsing of
+              levels of reified context, producing a target structure whose
+              semantical context is more implicit than the source structure.
+              Interestingly,
+              many <a href="https://en.wikipedia.org/wiki/Exploit_(computer_security)">exploits</a>
+              can be viewed as getting data from one context into that of a
+              different, implicit context; try applying this model
+              to <a href="https://en.wikipedia.org/wiki/Stack_buffer_overflow">stack
+              smashing</a>, <a href="https://en.wikipedia.org/wiki/Code_injection">code
+              injection</a>, or
+              even <a href="https://about.gitlab.com/blog/2020/03/30/how-to-exploit-parser-differentials/">parser
+              differentials</a>. It's also worth comparing the idea of
+              semantical base cases through implicit context to
+              the <a href="https://en.wikipedia.org/wiki/Symbol_grounding_problem">symbol
+              grounding problem</a>.
+            </p>
+            <p class="text-article">
+              In any case, the idea of reifying models of semantics to produce
+              interrelated sets of structures and semantics directly leads to
+              the next section, describing metasystems as providing environments
+              of reified models.
+            </p>
+
+            <div class="article-example">
+              <h5 class="text-center" style="text-transform: none">Aside: Interpreters in the Universe</h5>
+              <p class="text-article">
+                A fundamental model that must be developed early in the study of
+                language systems is the distinction between
+                the <keyword>implementation</keyword> language and
+                the <keyword>implemented</keyword> language. Importantly,
+                semantics that are not explicitly defined for the implemented
+                language are implicitly "pulled up" from the implementation
+                language. As a simple example, in a language like C or C++, the
+                semantics
+                of <b>signed</b> <a href="https://en.wikipedia.org/wiki/Integer_overflow">integer
+                overflow</a> is not explicitly defined, and so is implicitly
+                pulled up from the processor (although really the behavior
+                is <a href="https://en.wikipedia.org/wiki/Undefined_behavior">undefined</a>
+                and the compiler could compile-out code that might otherwise
+                overflow for the sake of some optimization). As another example,
+                a language system which doesn't define its
+                own <a href="https://en.wikipedia.org/wiki/Continuation">continuation</a>
+                semantics implicitly relies on the control state behavior of the
+                implementation language. One reason
+                why <a href="https://en.wikipedia.org/wiki/Meta-circular_evaluator">meta-circular
+                or self interpreters</a> can be so easy to write in Lisps is
+                that most of the code is simply pulling semantics from the
+                interpreter below it; this is not unique to Lisp,
+                but <a href="https://en.wikipedia.org/wiki/Homoiconicity">homoiconicity</a>
+                and minimal syntax minimizes the amount of code that doesn't
+                directly correspond to language semantics.
+              </p>
+              <p class="text-article">
+                A processor can be seen as a physical implementation of an
+                interpreter for a
+                particular <a href="https://en.wikipedia.org/wiki/Instruction_set_architecture">ISA</a>.
+                It's worth asking what semantics a processor explicitly defines
+                and what is implicitly pulled up. We might say that
+                functionality built out
+                of <a href="https://en.wikipedia.org/wiki/Logic_gate">logic
+                gates</a> is explicitly defined, while the behaviors of
+                basic <a href="https://en.wikipedia.org/wiki/Electronic_component">electronic
+                components</a> are implicitly pulled up from the universe.
+                Insofar as physics enables us to understand the semantics of the
+                universe, we can construct physical structures to produce
+                meaning within a range of expected but implicit contexts. In
+                this sense, processors do not create computation but rather
+                harness computation from the universe, and computation in the
+                universe is the upholding of causality as spatio-temporal
+                structure.
+              </p>
+              <p class="text-article">
+                By this logic, machine code is not the ultimate base case in the
+                path from structure to meaning, the universe is. Processors are
+                but one form of interpreters running in the universe. Biological
+                systems are a particularly fascinating example of natural
+                interpreters in the universe. From the author's perspective, the
+                manufacturing process is the fundamental difference between
+                "artificial" and biological interpreters, although the most
+                manifest effect of this disparity is in how the interpreters
+                harness computation from the universe (notwithstanding the fact
+                that <a href="https://en.wikipedia.org/wiki/Autopoiesis">autopoietic</a>
+                systems do not draw a clear distinction between harnessing
+                computation from the universe and manufacturing the system which
+                does so).
+              </p>
+            </div>
+            <p class="text-article"></p>
+
+            <br>
+            <h4 class="text-center" style="text-transform: none">Self-Leveraging Metasystem</h4>
+            <p class="text-article">
+              The term metasystem has many different meanings in different
+              contexts. In this article, we define
+              a <keyword>metasystem</keyword> to be a system which provides an
+              environment to reify and share models. Let us briefly look at a
+              couple of systems through this model of metasystem.
+            </p>
+
+            <div class="article-example">
+              <h5 class="text-center" style="text-transform: none">*nix</h5>
+              <p class="text-article">
+                A key part of the Unix philosophy
+                is <a href="https://en.wikipedia.org/wiki/Everything_is_a_file">Everything
+                is a file</a>. From the model of metasystems above, the
+                filesystem serves as the environment, and files & directory
+                structures enable the persistence and sharing of reified models.
+                Pragmatic and flexible, Unix seeks to avoid dictating what sorts
+                of structures reification can produce; if it can
+                be <a href="https://en.wikipedia.org/wiki/Serialization">serialized</a>,
+                it can be a file. On the other hand, clients of the metasystem
+                are left responsible for understanding the structures within and
+                between files, since the metasystem distances itself from such
+                details.
+              </p>
+
+              <p class="text-article">
+                A great example of a system which acknowledges and leverages the
+                kernel as a metasystem
+                is <a href="https://en.wikipedia.org/wiki/Git">git</a>. While
+                used as a version control system, git is fundamentally designed
+                as a content-addressable directory structure, beginning with the
+                .git directory in non-bare repositories. Since the filesystem
+                already provides the means of persisting and sharing objects,
+                the "plumbing" of git mostly just needs to determine how to tie
+                directory structure to semantics. Look at .git/objects to see
+                how object hashes are used to enable efficient object lookups
+                while minimizing the custom logic git needs to implement; if the
+                filesystem already implements object persistence
+                and <a href="https://www.kernel.org/doc/html/latest/filesystems/ext4/directory.html">directory
+                lookups</a>, why try to reimplement such functionality on top?
+                Perhaps it should be unsurprising that
+                the <a href="https://en.wikipedia.org/wiki/Linus_Torvalds">original
+                author</a> has a deep understanding of the kernel; while
+                abstraction allows us to build the immensely complex systems of
+                today and facilitates partial comprehension in the face of such
+                complexity, the reality
+                of <a href="https://en.wikipedia.org/wiki/Leaky_abstraction">leaky
+                models</a> is that the ever-expanding complexity of software
+                systems demands an ever-increasing breadth and depth of
+                knowledge from the computer scientist.
+              </p>
+            </div>
+            <p class="text-article"></p>
+            <div class="article-example">
+              <h5 class="text-center" style="text-transform: none">Smalltalk</h5>
+              <p class="text-article">
+                While Unix takes a pragmatic and unopinionated take on how
+                models should be
+                reified, <a href="https://en.wikipedia.org/wiki/Smalltalk">Smalltalk</a>
+                embodies a more principled and opinionated philosophy. Rather
+                than "everything is a file", Smalltalk asserts "everything is an
+                object". In particular, while *nix kernels leave the details of
+                structure to clients, Smalltalk represents the structure of
+                objects
+                through <a href="https://en.wikipedia.org/wiki/Class_(computer_programming)">classes</a>;
+                indeed, classes themselves are objects and their classes
+                are <a href="https://en.wikipedia.org/wiki/Metaclass">metaclasses</a>.
+                It's worth tying this back to the idea of interrelated structure
+                and semantics.
+              </p>
+            </div>
+            <p class="text-article"></p>
+
+            <p class="text-article">
+              Similarly, most systems that roughly comply with the models of
+              language systems or operating systems (including systems
+              like <a href="https://en.wikipedia.org/wiki/Emacs">Emacs</a>
+              and <a href="https://en.wikipedia.org/wiki/Kubernetes">Kubernetes</a>)
+              can be seen as kinds of metasystems, although often serve as more
+              constrained and specific metasystems.
+            <p class="text-article">
+              Having implemented a metasystem, it is difficult to resist the
+              power of reifying some model of the metasystem within itself. Many
+              *nix systems expose system information
+              through <a href="https://en.wikipedia.org/wiki/Procfs">procfs</a>
+              and Linux also exposes self-information
+              through <a href="https://en.wikipedia.org/wiki/Sysfs">sysfs</a>.
+              Smalltalk-80 is itself implemented as Smalltalk-80 objects, built
+              on top of
+              a <a href="https://en.wikipedia.org/wiki/Metaobject#Metaobject_protocol">metaobject
+              protocol</a>. When a metasystem reifies a model of itself within
+              itself, as above, we call
+              it <a href="https://en.wikipedia.org/wiki/Reflective_programming">reflective</a>.
+              While many metasystems have some form of reflection, reflective
+              capabilities exist on a spectrum. The more detailed and causal the
+              self-model being reified, the more reflective the system is.
+              Indeed, compared to Smalltalk-80 or 3-Lisp, most computational
+              systems seem to hardly register on the reflective spectrum.
+            </p>
+
+            <h3 class="section-heading text-center">Tying the Models Together</h3>
+            <p class="text-article">
+              As with Smalltalk, Amlang is a deeply reflective metasystem, but
+              takes a fundamentally different approach to reifying models in
+              general and itself in particular. The details must be deferred to
+              an article on the system's architecture, but overall, Amlang
+              dictates less about how models should be reified than Smalltalk
+              does (using what might be considered a structured metagraph rather
+              than object system). As a self-intersecting language system,
+              Amlang does not need to come pre-intersected with a metaobject
+              protocol; clients could always create a metaobject protocol if
+              needed. We call Amlang a self-leveraging metasystem because the
+              base system can use self-intersected versions of itself to
+              leverage models reified as structures that the base system itself
+              lacks the context to interpret (what could be seen
+              as <a href="https://en.wikipedia.org/wiki/Metalinguistic_abstraction">metalinguistic
+              abstraction</a> within a reflective tower of interpreters).
+            </p>
+            <p class="text-article">
+              Like Unix, Amlang seeks not to predetermine how to model reality;
+              after all, models are but contextually useful lenses of reality.
+              Unlike Unix, Amlang is designed to allow the reflection and
+              leverage of whatever models are indeed created.
+            </p>
+            <p class="text-article">
+              Semantics cannot be always reified as structure; indeed we
+              eventually need to bottom-out with implicit context. But implicit
+              context at one moment need not mean implicit context forever.
+            </p>
+            <p class="text-article">
+              To summarize, Amlang is a general, self-leveraging metasystem
+              which embodies the notion that models are only contextually useful
+              lenses of reality.
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; Alex Khouderchah 2021</span>
+          </div>
+          <div class="col-md-8">
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../js/jquery.easing.1.3.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Article JS -->
+    <!-- TODO - make min -->
+    <script src="../../js/article.js"></script>
+
+  </body>
+
+</html>
