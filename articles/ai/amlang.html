@@ -90,7 +90,10 @@
     <section id="portfolio">
       <div class="container">
         <div class="row">
-          <p class="text-article" style="font-size: 13px">v1.0 - Published 28 Oct 2021</p>
+          <p class="text-article" style="font-size: 13px">
+            Initially published: &ensp;2021-10-28<br>
+            Last updated: &ensp;&emsp;&emsp;&thinsp;&thinsp;2022-02-19
+          </p>
           <center>
           <button type="button" class="text-article text-button night-toggle" style="text-align: center">
               <span class="sr-only">Toggle navigation</span> Toggle Night Mode&nbsp;
@@ -299,17 +302,16 @@
             <p class="text-article"></p>
 
             <p class="text-article">
-              Unlike these systems, Amlang does not come pre-intersected with a
-              specific formal system. Instead, it provides a general language
-              system within which formal systems can be created and intersected;
-              clients could use Amlang to develop their own type
-              system/inference engine/automatic differentiation engine/object
-              system/etc, which could then be intersected with Amlang (at least
-              within some context). A more detailed look into how this is done
-              must be deferred to a future article of Amlang's architecture, but
-              even this conceptual view leads to the idea that creating such a
-              general system makes more explicit the interrelated nature of
-              structure and semantics.
+              Unlike the above examples, the system Amlang comes pre-intersected
+              with is specifically designed to enable the creation of new
+              systems to intersect with Amlang; clients could use Amlang to
+              develop their own type system/inference engine/automatic
+              differentiation engine/object system/etc, which could then be
+              intersected with Amlang (at least within some context). A more
+              detailed look into how this is done must be deferred to a future
+              article of Amlang's architecture, but even this conceptual view
+              leads to the idea that creating such a general system makes more
+              explicit the interrelated nature of structure and semantics.
             </p>
 
             <br>
@@ -388,9 +390,10 @@
                 or self interpreters</a> can be so easy to write in Lisps is
                 that most of the code is simply pulling semantics from the
                 interpreter below it; this is not unique to Lisp,
-                but <a href="https://en.wikipedia.org/wiki/Homoiconicity">homoiconicity</a>
-                and minimal syntax minimizes the amount of code that doesn't
-                directly correspond to language semantics.
+                but <a href="https://en.wikipedia.org/wiki/Homoiconicity">homoiconicity</a>,
+                minimal syntax, and an elegant computational model minimizes
+                the amount of code that doesn't directly correspond to language
+                semantics.
               </p>
               <p class="text-article">
                 A processor can be seen as a physical implementation of an
