@@ -229,6 +229,18 @@ asideLoc::after {
 	margin: 0 auto;
 }
 
+code {
+  background-color: #CCCCCC;
+  color: #333333;
+  text-align: left;
+}
+
+.night-mode code {
+  background-color: #333333;
+  color: #BBBBBB;
+  text-align: left;
+}
+
 pre code {
 	color: #777777; /* Line number colors */
 	text-align: left;

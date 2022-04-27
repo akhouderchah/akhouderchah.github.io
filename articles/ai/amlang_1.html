@@ -1,0 +1,725 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Alex Khouderchah">
+
+    <title>Amlang - Part 1: Environment</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Theme CSS -->
+    <!-- TODO - REPLACE WITH MIN! -->
+    <link href="../../css/agency.css" rel="stylesheet">
+    <link href="../../css/general.css" rel="stylesheet">
+
+    <!-- MathJax -->
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <!-- code-prettify -->
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <style>
+      li.L0, li.L1, li.L2, li.L3,
+      li.L5, li.L6, li.L7, li.L8 {
+          list-style-type: decimal !important;
+      }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY" crossorigin="anonymous"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
+        <![endif]-->
+
+         </head>
+
+  <body id="page-top" class="index bg-medium-gray bg-paper">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top page-scroll top-only-show">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+          </button>
+          <a class="top-unhidden" href="../../index.html">Alex Khouderchah</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="hidden">
+              <a href="#page-top"></a>
+            </li>
+            <li>
+              <a class="page-scroll" href="../../articles.html">Articles</a>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+
+    <header style="background-image:url('../../img/header-bg.jpg');">
+      <div class="container">
+        <div class="intro-text">
+          <div class="intro-heading">Amlang</div>
+          <div class="intro-lead-in">Part 1: Environment</div>
+      </div>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+      <div class="container">
+        <div class="row">
+          <p class="text-article" style="font-size: 13px">
+            Initially Published: &ensp;2022-05-02<br>
+            Last Modified: &ensp;&emsp;&emsp;&thinsp;2022-05-02
+          </p>
+          <center>
+          <button type="button" class="text-article text-button night-toggle" style="text-align: center">
+              <span class="sr-only">Toggle navigation</span> Toggle Night Mode&nbsp;
+              <i class="fa fa-moon-o"></i>
+          </button>
+          </center>
+          <div class="col-lg-12 bg-light-gray" id="rightRef">
+            <h3 class="section-heading text-center">Overview</h3>
+            <p class="text-article">
+              The next article in this series will describe how Amlang is both a
+              database for a language and a language for a database, and more
+              broadly how it's an intersection of language, database, and
+              simulation systems. At the heart of this matter&#8213;and one of
+              the distinguishing characteristics of Amlang&#8213;is the
+              Environment. It's highly recommended to have
+              read <a href="./amlang_0.html">Part 0: Background</a> of this
+              series before reading this part.
+            </p>
+
+            <h3 class="section-heading text-center">S-Exps and Lisp</h3>
+            <p class="text-article">
+              An <a href="https://en.wikipedia.org/wiki/S-expression">S-expression</a>
+              is either a primitive (e.g. integer, string, array, hash table,
+              etc), or a <a href="https://en.wikipedia.org/wiki/Cons">cons
+              cell</a> (an ordered pair of
+              S-expression <a href="https://en.wikipedia.org/wiki/Reference_(computer_science)">references</a>,
+              where the first and second elements are
+              called <keyword>car</keyword> and <keyword>cdr</keyword>,
+              respectively). We can apply this definition recursively and see
+              that S-exps can represent
+              any <a href="https://en.wikipedia.org/wiki/Binary_tree">binary
+              tree</a>. In
+              most <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)">Lisps</a>,
+              S-exps can also be used to represent
+              certain <a href="https://en.wikipedia.org/wiki/Cycle_(graph_theory)">cyclic
+              graphs</a>, but S-exps in Amlang can only represent binary trees
+              (i.e. cons cells in Amlang have unique ownership of their car &
+              cdr).
+            </p>
+
+            <p class="text-article">
+              From this perspective, cons cells are a means of gluing together
+              component S-exps. Importantly, as an ordered pair of references to
+              component S-exps, this glue only works in one direction. From the
+              perspective of a cons cell, there is some relation between its
+              component S-exps, but from the perspective of either of the
+              components, there is no obvious link between it and the other
+              component. This also means that cons cells allow for building on
+              top of existing components without needing to modify or move them.
+            </p>
+            <img class="img-main" src="../../img/articles/cons_perspective.png" alt="Cons perspective" width="65%">
+            <p class="text-caption">Figure 1: On the left, we can see the link between A & B. On the right, we cannot.</p>
+            <p class="text-article"></p>
+
+            <p class="text-article">
+              In addition, cons cells can be connected in different
+              configurations in order to glue together more than just two
+              components. However, because the components themselves may also be
+              cons cells, the "viewer" must already know the structure of the
+              glue (how the top-level cons cells are configured) in order to
+              distinguish the glue from the components being glued. Indeed,
+              there isn't inherently one way to distinguish between the glue and
+              the components; an S-exp can be seen as an atomic unit or as
+              various configurations and levels of glue & components.
+            </p>
+
+            <p class="text-article">
+              We can construct the idea of a <keyword>list</keyword> as a series
+              of cons cells where the car is an element of the list and the cdr
+              is either another cons or a special terminating value of NIL. In
+              this way, we can "glue" an arbitrary and extendible number of
+              components together while still knowing what's glue and what
+              isn't. Textually, we represent a single cons of A & B
+              as <code class="prettyprint">(A . B)</code> and shorten a list's
+              textual representation from <code class="prettyprint">(A . (B . (C
+              . NIL)))</code> to <code class="prettyprint">(A B C)</code>. Look
+              at how the text and structure
+              of <a href="https://en.wikipedia.org/wiki/S-expression#/media/File:Corrected_S-expression_tree_2.svg">this
+              S-exp</a> compare. By extending the notion of lists to
+              include <keyword>improper lists</keyword>, which terminate with an
+              arbitrary S-exp rather than NIL (written
+              as <code class="prettyprint">(A B C . D)</code>), we can represent
+              all S-exps as lists of S-exps (in many Lisps, this can be used to
+              create cycles by D being a reference to an earlier part of the
+              S-exp). Continuing with the idea of looking at S-exps in different
+              ways, this means we can consider an S-exp as either a primitive or
+              cons, or as a primitive or list. In a
+              sense, <code class="prettyprint">(A . (B . (C . D)))</code>
+              and <code class="prettyprint">(A B C . D)</code> textually
+              represent these two views.
+              </p>
+
+            <p class="text-article">
+              Lisps represent not only "normal data", but also Lisp code itself
+              as S-exps (making the
+              languages <a href="https://en.wikipedia.org/wiki/Homoiconicity">homoiconic</a>).
+              The default expectation of a Lisp interpreter is for code to be a
+              list where, when all elements are evaluated individually, the
+              first element is a function and remaining elements are function
+              arguments; take a look at <code class="prettyprint">(* (+ 1 2) (+
+              3 4) 5)</code>. Indeed, the name "Lisp" stands for "list
+              processor" and comes from this view of the interpreter. "Syntax"
+              is any deviation from using plain lists to distinguish between
+              glue and components (like <code class="prettyprint">(let ((NAME1
+              VAL1) (NAME2 VAL2) ...) INNER_CODE)</code>), and "special forms"
+              are syntax + associated special processing rules
+              (in <code class="prettyprint">(if PREDICATE A B)</code>, only one
+              of A or B should be evaluated).
+            </p>
+
+            <p class="text-article">
+              In a sense, even the data and code created by Lisp programmers are
+              just syntax and special form processing within their own contexts.
+              The interface of a function is a model of specific computation,
+              where the function name (say, "geometric-mean") represents this
+              limited context of specific computation. The Lisp language just
+              happens to be a built-in, top-level set of syntax and special
+              forms that&#8213;as with all general-purpose languages&#8213;acts
+              as both a model and metamodel of code (i.e. allows both for the
+              creation of code according to the built-in model of computation,
+              and for the creation of new models of computation using the
+              built-in model of computation). This is a useful model
+              of <a href="https://en.wikipedia.org/wiki/Turing_completeness">Turing
+              completeness</a>. Since
+              a <a href="https://en.wikipedia.org/wiki/Universal_Turing_machine">Universal
+              Turing machine</a> can simulate any Turing machine, its input
+              represents a model
+              of <a href="https://en.wikipedia.org/wiki/Recursively_enumerable_language">recursively
+              enumerable languages</a>; since the Turing machine being simulated
+              may itself be a different Universal Turing machine, all Universal
+              Turing machines (and all Turing-complete models of computation)
+              can act as both models <b>and</b> metamodels of recursively
+              enumerable languages. A Turing machine which is not universal
+              <b>may</b> still permit some limited form of metamodeling (whether
+              as a general metamodel for a grammar type higher in
+              the <a href="https://en.wikipedia.org/wiki/Chomsky_hierarchy">Chomsky
+              hierarchy</a> or as a more limited kind of metamodel), or it may
+              indeed be only usable as a direct model of computation.
+            </p>
+
+            <div class="article-example">
+              <h5 class="text-center" style="text-transform: none">Aside: Exploitation as Metamodeling</h5>
+              <p class="text-article text-no-bottom">
+                A useful model of developing
+                an <a href="https://en.wikipedia.org/wiki/Exploit_(computer_security)">exploit</a>
+                is as finding a way to use a component's model of specific
+                computation (i.e. its interface) as a metamodel that can be used
+                to produce different types of computation than the component was
+                designed for. In this sense, a key aspect of secure programming
+                is reducing the ability for models of computation to
+                inadvertently serve as metamodels of computation. However, while
+                some exploits may directly use an interface as a metamodel
+                (think of a really
+                straightforward <a href="https://en.wikipedia.org/wiki/Code_injection">code
+                injection</a>), exploits tend to take advantage of details below
+                the top-level interface, like of:
+              </p>
+              <ul class="text-article">
+                <li>the component's private implementation</li>
+                <li>the broader application's implementation & interfaces</li>
+                <li>the language systems' implementation & configuration</li>
+                <li>other <a href="https://en.wikipedia.org/wiki/User_space_and_kernel_space">user-space</a>
+                components & configuration</li>
+                <li>kernel-space components & configuration</li>
+                <li>the interface & implementation of the CPU (the "base" language system)</li>
+                <li><a href="https://en.wikipedia.org/wiki/Firmware">firmware</a>
+                of any processor on the system (modern computers are really
+                networks of smaller computers connected over
+                internal <a href="https://en.wikipedia.org/wiki/Bus_(computing)">buses</a>,
+                sometimes with a disappointing or unavoidable lack
+                of <a href="https://en.wikipedia.org/wiki/Trust_boundary">trust
+                boundaries</a>)</li>
+                <li>physical details of the hardware and the context of
+                its <a href="https://en.wikipedia.org/wiki/Spacetime">spacetime</a>,
+                coupled with the physics of the universe</li>
+              </ul>
+
+              <p class="text-article text-no-bottom">
+                Some examples of using top-level application interfaces as a
+                metamodel (i.e. finding a different model of computation and
+                "compiling down" uses of that new model to the original
+                top-level interface):
+              </p>
+              <ul class="text-article">
+                <li>Finding
+                an <a href="https://en.wikipedia.org/wiki/Integer_overflow">integer
+                overflow</a> vulnerability in a routine that allocates memory,
+                but the overflow can only be exploited from a few uses of that
+                routine within the project, which must be crafted the right
+                inputs from the top-level interfaces</li>
+                <li>Taking advantage of
+                a <a href="https://en.wikipedia.org/wiki/Stack_buffer_overflow">stack
+                overflow</a> in conjuction with a particular
+                CPU's <a href="https://en.wikipedia.org/wiki/Instruction_set_architecture">ISA</a>
+                and the
+                platform's <a href="https://en.wikipedia.org/wiki/Application_binary_interface">ABI</a>
+                to turn the actual machine code of the compiled executable into
+                a completely different computational model, composed
+                of <a href="https://en.wikipedia.org/wiki/Return-oriented_programming">gadgets</a></li>
+                <li>Exploiting
+                a <a href="https://en.wikipedia.org/wiki/Buffer_overflow">buffer
+                overflow</a> in
+                a <a href="https://en.wikipedia.org/wiki/Device_driver">device
+                driver</a> by poking the top-level interface in a way which will
+                produce the desired conditions in the driver state, and
+                leveraging that to attack the kernel under the application's
+                feet</li>
+                <li>Using the nature of DRAM and increased memory density
+                to <a href="https://en.wikipedia.org/wiki/Row_hammer">flip bits
+                of adjacent memory rows</a> by using the top-level interface as
+                a model of memory accesses and cache line flushes</li>
+              </ul>
+
+              <p class="text-article">
+                This relates to the fact that "hacker" tends to be used both in
+                a general sense and in more specific manner. The broader sense
+                of "hacker" is someone who uses computers (or more broadly any
+                tool) to achieve novel and clever outcomes, and often approaches
+                the task with a sense of curiosity and exploration. Apathy,
+                disinterest, or belief that most interesting problems have
+                already been solved are ethoses most antithetical to the hacker
+                mindset. The general term of "hacker" can be put into
+                perspective by recognizing that the language system being used
+                (whether processor, interpreter, compiler, or some
+                combination/tower) is likely general and explicitly designed to
+                be both model and metamodel of computation. By focusing instead
+                on systems that explicitly try <b>not</b> to behave as
+                metamodels and only serve a specific, limited purpose, we arrive
+                at the more limited (but more popularly recognized) sense of the
+                word "hacker". The author would argue that hackers in both
+                senses of the word are essential to
+                the <a href="https://en.wikipedia.org/wiki/Free_software_movement">Free
+                Software movement</a>.
+              </p>
+
+              <p class="text-article">
+                From the above discussion, we can see that the genesis of
+                "hacking" in the more limited & popular sense of the word is
+                exploitation. However, out of the seed of exploitation has grown
+                the vast fields of cybersecurity and cyberwarfare&#8213;covering
+                such topics as reconaissance, post-exploitation, stealth, social
+                engineering, perimeter defense, observability & monitoring,
+                principle of least privilege, defense-in-depth, and much
+                more&#8213;with tactical, operational, and strategic
+                considerations. On the other hand, without an understanding of
+                exploitation, the tapestry of cybersecurity will always seem
+                vague and nebulous, with dogma serving to obscure this
+                formlessness. Simply due to their
+                nature, <a href="https://en.wikipedia.org/wiki/Blue_team_(computer_security)">blue
+                teams</a> tend to be more susceptible to this
+                than <a href="https://en.wikipedia.org/wiki/Red_team">red
+                teams</a>.
+              </p>
+            </div>
+
+            <p class="text-article">
+            </p>
+
+            <p class="text-article">
+              An important note is that representing Lisp code as S-exps does
+              not mean Lisp code <b>must</b> be S-exps. In modern
+              Lisps, <a href="https://en.wikipedia.org/wiki/Metaprogramming">metaprogramming</a>
+              is achieved through the use
+              of <a href="https://en.wikipedia.org/wiki/Macro_(computer_science)#Syntactic_macros">macros</a>&#8213;which
+              treat their input (Lisp code) as S-exps and can modify them how
+              they like&#8213;but must be evaluated by a certain point in the
+              "compilation" of the code. After this stage, the language system
+              can compile down
+              into <a href="https://en.wikipedia.org/wiki/Bytecode">bytecode</a>
+              or machine code like any other language. What the S-exp
+              representation of Lisp code enables is the use of Lisp to create &
+              modify Lisp in an elegant manner that clearly reflects normal Lisp
+              programming (although metaprogramming inherently demands higher
+              cognitive load), whereas other languages tend to use either a
+              different metaprogramming language (e.g. C macros, C++ templates,
+              Rust macro_rules), the same language in a different context that
+              requries much specialized knowledge (e.g. Rust procedural macros),
+              or the same language in a greatly constrained context (e.g. C++
+              constexpr, Rust const). Prior to the use of macros for
+              metaprogramming, early Lisps
+              used <a href="https://en.wikipedia.org/wiki/Fexpr">fexpr</a>,
+              which is similar to macros but can be used for metaprogramming at
+              any point in runtime rather than only during compile-time.
+              Nowadays, fexpr-like features tend to be associated with highly
+              reflective systems like 3-Lisp rather than mainstream language
+              systems. With that said, even fexpr-like behavior does not mandate
+              a permanent S-exp representation of code; if any representation of
+              some code (whether
+              persisted <a href="https://en.wikipedia.org/wiki/Intermediate_representation">IR</a>,
+              a final compiled representation, or a mix of both) can reproduce
+              an S-exp representation on-demand, that code can be applied to an
+              fexpr without needing to always be an S-exp.
+            </p>
+
+            <p class="text-article text-no-bottom">
+              Before we end our tour of S-exps, note that the "S" in "S-exp"
+              stands for symbolic. That is, traditionally S-exps have been used
+              in contexts (like Lisps)
+              where <a href="https://en.wikipedia.org/wiki/Symbol_(programming)">symbols</a>&#8213;as
+              a unique ID and an associated name&#8213;played a key role in
+              their use (i.e. where the language system centers meaning
+              around <a href="https://en.wikipedia.org/wiki/Symbol_table">symbol
+              tables</a>). From the author's perspective, this has long been a
+              limitation of Lisps because symbols are tailored towards human
+              users rather than the language system itself. Humans dictating the
+              behavior of a software system does not preclude the use of
+              software in achieving that goal; in fact, it is the very nature of
+              language systems to be software which creates software, and a lens
+              of AI is as the logical conclusion of this path. From this
+              perspective, symbols as ID + name are a limitation because the
+              semantics & semantical context of the associated name are implicit
+              to the language system. This is especially true because symbols
+              tend to be connected through their names&#8213;which hides those
+              connections from the language system (e.g. how are
+              "arithmetic-mean" and "geometric-mean" related, or "ReplicaSet"
+              and "Pod"?)&#8213;and because symbols actually encapsulate
+              important semantics. If we could arbitrarily change symbol names
+              without changing the meaning of the code (considering not only
+              execution of final, "compiled" representations, but also the
+              process of creating/modifying that code), the above points
+              wouldn't quite matter. Note that none of this is an argument
+              against the use of symbols, but rather an argument against using
+              symbols as fundamental to a language system rather than as a
+              convenience for humans.
+            </p>
+
+            <h3 class="section-heading text-center">The Environment</h3>
+            <p class="text-article">
+              Let's begin by considering
+              a <a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">graph</a>
+              as a set of vertices (also called nodes), and a set of edges
+              (ordered or unordered pairs of vertices). Graphs use local
+              connections to produce global structures of incredible variety,
+              and are the central model upon
+              which <a href="https://en.wikipedia.org/wiki/Graph_theory">graph
+              theory</a>
+              and <a href="https://en.wikipedia.org/wiki/Network_science">network
+              science</a> are built. Graphs can also be used to represent
+              knowledge/information, which is the purview
+              of <a href="https://en.wikipedia.org/wiki/Graph_database">graph
+              databases</a>. However, when representing information, we are
+              often not only concerned with <b>whether</b> two
+              nodes/concepts/models/etc are connected, but also <b>how</b> they
+              are connected. This leads us to extending the idea of an edge from
+              a pair of nodes to a <keyword>triple</keyword> of nodes, where the
+              middle node represents the edge itself (i.e. the context by which
+              the other two nodes are connected). By convention, the three
+              components of a semantic triple are referred to as subject,
+              predicate, and object, although it's not necessary for semantic
+              triples to abide by human-language grammatical rules. A graph
+              database based on the idea of semantic triples is called
+              a <a href="https://en.wikipedia.org/wiki/Triplestore">triplestore</a>.
+            </p>
+
+            <p class="text-article">
+              This idea of taking graphs
+              and <a href="https://en.wikipedia.org/wiki/Reification_(knowledge_representation)">reifying</a>
+              edges produces a structure we call a <keyword>metagraph</keyword>,
+              which&#8213;compared to a regular graph&#8213;can create edges
+              between a vertex and edge, and between edges. Indeed there is no
+              longer a clear distinction between what was before vertex and
+              edge. For example, in <code class="prettyprint">(antonym antonym
+              synonym)</code>, antonym acts as both "vertex" and "edge". It's
+              worth noting that we could contrive various manners of "compiling
+              down" a triplestore into a database implemented with edges rather
+              than triples (i.e. the systems
+              have <a href="https://en.wikipedia.org/wiki/Bisimulation">bisimulation</a>).
+              This allows for graph theory to still be relevant (think
+              of <a href="https://en.wikipedia.org/wiki/Denotational_semantics">denotational
+              semantics</a>), but different implementations would excel at very
+              different kinds of workloads.
+            </p>
+
+            <p class="text-article">
+              As a first approximation, we could look at the Environment as a
+              metagraph where Nodes may contain structures (S-exps). In a sense,
+              a Node containing a structure is an abstraction of the structure,
+              like symbols are in Lisps. A Node containing a structure is
+              referred to as <keyword>structured</keyword>, and is
+              otherwise <keyword>atomic</keyword>. Nodes are one of the key
+              primitives of the process
+              of <a href="https://en.wikipedia.org/wiki/Abstraction">abstraction</a>
+              in Amlang; any structure&#8213;or even a vague concept with no
+              associated structure&#8213;can be inserted into an Environment,
+              and the resulting Node may then be used to refer to that
+              structure/concept. Importantly, Nodes are also one of the S-exp
+              primitives in Amlang, meaning that structures may themselves
+              contain Nodes. It's in this way that Amlang S-exps may represent
+              cycles despite their base structure being inherently non-cyclic.
+              Note that Nodes don't necessarily have any one "meaning", and the
+              fact that a Node is discrete does not necessitate that the meaning
+              it abstracts is a discrete or formal concept (like how the
+              discrete outputs of
+              a <a href="https://en.wikipedia.org/wiki/Statistical_classification">classifier</a>
+              don't imply formal, axiomatic concepts, but rather fuzzy,
+              statistical ones). We must defer further pursuit of the idea of
+              "meaning" to the next article in this series, on Agents.
+            </p>
+
+            <p class="text-article">
+              In this way, Nodes can be parts of the metagraph&#8213;connected
+              by triples&#8213;or parts of structures within or external to the
+              metagraph, connected by cons cells or any aggregate primitive
+              types (arrays, hash tables, etc). Since the structures within the
+              metagraph may themselves refer to different parts of the
+              metagraph, the result is less like a plane of triple-connected
+              nodes containing isolated structures, and more like a spherical
+              shell of triple-connected nodes that are internally interconnected
+              by structures built on top of each other (just an analogy of
+              course; the metagraph alone need not
+              be <a href="https://en.wikipedia.org/wiki/Planar_graph">planar</a>).
+              We thus refer to the Environment as a <keyword>structured
+              metagraph</keyword>.
+            </p>
+
+            <p class="text-article">
+              Finally, triples in the Environment are also a kind of Node.
+              Conceptually, one can think of triples as a specific kind of
+              structured Node, whose structure is treated specially by the
+              underlying Amlang implementation and
+              the <a href="https://github.com/Khouderchah-Alex/amlang/blob/master/src/environment/environment.rs#L18">Environment
+              interface</a>. With triples as Nodes, we can make triples about
+              triples, like <code class="prettyprint">((Earth is flat)
+              provenance random-blogger-27)</code>. In a sense, making triples a
+              kind of Node provides a recursive step for reifying the graph
+              structure, where moving from edges to triples was a base step in
+              reifying the graph structure. To put in another way, to the degree
+              that triples represent knowledge (whether through local
+              connections alone or global structure holistically) reifying
+              triples as Nodes allows for knowledge-about-knowledge, both in the
+              form of structure and metagraph. This same reification could be
+              achieved just by making edges (pairs) as a kind of Node, but as
+              stated earlier, triples are a more convenient model when we care
+              not only about whether Nodes are related but also about how.
+            </p>
+
+            <h4 class="section-heading text-center">Structure vs Metagraph</h4>
+            <p class="text-article text-no-bottom">
+              We can look at the fundamental models provided by an operating
+              system
+              as <a href="https://en.wikipedia.org/wiki/Process_(computing)">process</a>
+              and <a href="https://en.wikipedia.org/wiki/File_system">filesystem</a>.
+              Let's begin with a very simplified model of a computer:
+            </p>
+            <ul class="text-article text-no-bottom">
+              <li>a single CPU which can do only one thing at a time</li>
+              <li>RAM as a line of <a href="https://en.wikipedia.org/wiki/Volatile_memory">volatile</a> bytes</li>
+              <li>a hard drive as a line of non-volatile bytes</li>
+            </ul>
+            <p class="text-article">
+              Process allows for each application to act as though it has
+              exclusive access to both CPU and RAM;
+              the <a href="https://en.wikipedia.org/wiki/Scheduling_(computing)">scheduler</a>
+              allows for multiple processes to be served by a single CPU,
+              and <a href="https://en.wikipedia.org/wiki/Virtual_memory">virtual
+              memory</a> allows for all of the processes's "RAM" to be served by
+              the single line of physical RAM (and
+              perhaps <a href="https://en.wikipedia.org/wiki/Memory_paging">backed
+              by the hard drive</a>). On the other hand, filesystems model the
+              line of bytes in a hard drive as a directory structure (a
+              hierarchy of directories and files of arbitrary size). This is the
+              core of what an OS kernel is, with drivers to take care of the
+              fact that the kernel's model of computer hardware is not the
+              actual interface provided by the underlying hardware/firmware.
+            </p>
+
+            <p class="text-article text-no-bottom">
+              We might say that the purpose of the OS is to abstract hardware
+              and provide a model of computers more suited to the kinds of tasks
+              we want to do with them. Language systems fit into this picture
+              primarily to abstract away two more details:
+            </p>
+            <ul class="text-article text-no-bottom">
+              <li>the CPU's built-in model of computation (machine code/assembly language)</li>
+              <li>the idea of a process's RAM (virtual memory)&#8213;and
+              sometimes files within filesystems&#8213;as being a line of
+              bytes</li>
+            </ul>
+            <p class="text-article">
+              Language systems do this by providing a set of computational and
+              storage primitives&#8213;as well as ways to combine these
+              primitives&#8213;in a manner that to some degree insulates project
+              implementations from hardware details and facilitates particular
+              kinds of tasks. While modeling both computation and storage is the
+              nature of all language systems, there has historically been
+              something of a bifurcation in the field of study and industry,
+              where remodeling computation is seen as more the purview of
+              programming languages and remodeling storage as more the purview
+              of database systems. This bifurcation might be justified by
+              viewing the focus of databases as data scale and querying within
+              the context of a
+              particular <a href="https://en.wikipedia.org/wiki/Consistency_model">consistency
+              model</a>, and the focus of programming languages
+              as <a href="https://en.wikipedia.org/wiki/Type_system">type
+              systems</a>, metaprogramming, and maintaining universality.
+              Particularly before the breakdown
+              of <a href="https://en.wikipedia.org/wiki/Dennard_scaling">Dennard
+              scaling</a> around 2006 and the inexorable rise
+              of <a href="https://en.wikipedia.org/wiki/Concurrent_computing">concurrency</a>
+              in mainstream software development, it was possible to skirt
+              issues of consistency within a programming language and use
+              databases as the provider of consistency when necessary (think
+              of <a href="https://en.wikipedia.org/wiki/Web_application">web
+              applications</a>). Beyond the modern reality of programming
+              languages needing sane and standardized consistency models
+              however, we will argue in the next article that bifurcating
+              language systems into programming languages and databases is
+              unproductive and causes problems for developing the field of
+              language systems.
+            </p>
+
+            <p class="text-article">
+              Triples and cons cells are both a form of glue between components.
+              In triples, the components being glued are always Nodes (although
+              the Nodes may be structured), whereas cons cells glue together
+              structures (although the structures might be or contain Nodes). As
+              discussed in the earlier section on S-exps, cons cells are a
+              uni-directional relation; only from the perspective of the cons
+              does the relation exist. On the other hand, triples are a
+              quad-directional relation, where the relation is available from
+              subject, predicate, object, and triple itself. This would be a
+              tri-directional relation if triples weren't reified in the
+              Environment; the triple direction is essentially in the direction
+              of meta-knowledge.
+            </p>
+
+            <p class="text-article">
+              It's worth looking at metagraph > structure > array as models of
+              storage providing a hierarchy of flexibility and inverse hierarchy
+              of performance. Triples as a glue are very flexible and
+              expressive, but are also clearly quite removed from the underlying
+              model of memory. In a somewhat less expressive and multivalent
+              context, S-exps are a perfectly fine representation of
+              information, with cons cells still enabling much dynamism and
+              facilitating prototyping. Finally, arrays essentially provide the
+              same model of storage as does the kernel, handing off a line of
+              bytes. One might consider how the flexible process of prototyping
+              a class's interface and members in source code compiles down into
+              an <a href="https://en.wikipedia.org/wiki/Virtual_method_table">array
+              of function pointers</a>
+              and <a href="https://en.wikipedia.org/wiki/Data_structure_alignment">array
+              of members & padding</a> as part of the ABI, or how the relational
+              model of data requires developers to mentally "compile down" their
+              data model into arrays. A key principle of Amlang is the ability
+              to both collapse and reproduce the context that provides semantics
+              for a particular structure&#8213;whether in metagraph, S-exp, or
+              array&#8213;although we defer this to the next article.
+            </p>
+
+            <p class="text-article">
+              Since machine code represents code & data as bytes in an array,
+              and since memory is byte-addressable, machine code has an inherent
+              ability to be abstracted by using the address of code/data as its
+              "node" (although where the structure of that "node" ends is still
+              implicit). This is an ability to abstract that is fundamental
+              to <a href="https://en.wikipedia.org/wiki/Von_Neumann_architecture">Von
+              Neumann architecture</a>. In the move to high-level languages, the
+              unit of abstraction tends to change; we may only abstract what the
+              language system allows us to abstract
+              (so-called <a href="https://en.wikipedia.org/wiki/First-class_citizen">first-class
+              citizens</a> of the language). A language might make basic data
+              types, functions, objects, and classes first-class, but in most
+              languages, the degree to which code itself can be abstracted is
+              limited to functions. In Lisps, the S-exp representation of code
+              allows for code to be abstracted, but often only at a particular
+              point in the journey from source to target code and still in a
+              rather limited manner. Gadgets, as mentioned in the aside on
+              exploitation, are an example of recovering the more general
+              abstractive capabilities of the processor from under the language
+              system's feet (although in a context where we don't want
+              generality). Note that preventing S-exps from directly
+              representing cycles imposes a requirement that cyclic structures
+              are always abstracted in the metagraph.
+            </p>
+
+            <p class="text-article">
+              We briefly note that there is no limitation to have only one
+              Environment in Amlang. Any semantic boundary can be applied to a
+              particular Environment, whether analogous
+              to <a href="https://en.wikipedia.org/wiki/Partition_(database)">database
+              partitions</a>, permission boundaries, task segregation, etc.
+              Currently, there is a top-level Environment called the Meta
+              Environment, which represents the relations between different
+              Environments and allows both the base Amlang system and
+              (presumably privileged) user systems to interact with, compare,
+              and interrelate different Environments.
+            </p>
+
+            <h3 class="section-heading text-center">Wrapping Up</h3>
+            <p class="text-article">
+              This article described Environment as a structured
+              metagraph&#8213;an interrelation of triplestore and S-exp-like
+              structure&#8213;using Nodes as the bridge between these quad- and
+              uni-directional models of storage. While this idea may seem
+              interesting, Environments truly come to life only when we add
+              Agents, which is the topic of the next article in this series.
+            </p>
+         </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; Alex Khouderchah 2022</span>
+          </div>
+          <div class="col-md-8">
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../js/jquery.easing.1.3.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Article JS -->
+    <!-- TODO - make min -->
+    <script src="../../js/article.js"></script>
+
+  </body>
+
+</html>
