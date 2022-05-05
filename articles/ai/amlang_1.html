@@ -93,7 +93,7 @@
         <div class="row">
           <p class="text-article" style="font-size: 13px">
             Initially Published: &ensp;2022-05-02<br>
-            Last Modified: &ensp;&emsp;&emsp;&thinsp;2022-05-04
+            Last Modified: &ensp;&emsp;&emsp;&thinsp;2022-05-05
           </p>
           <center>
           <button type="button" class="text-article text-button night-toggle" style="text-align: center">
@@ -471,20 +471,20 @@
 
             <p class="text-article">
               As a first approximation, we could look at the Environment as a
-              metagraph where Nodes may contain structures (S-exps). In a sense,
-              a Node containing a structure is an abstraction of the structure,
-              like symbols are in Lisps. A Node containing a structure is
+              metagraph where Nodes may contain Structures (S-exps). In a sense,
+              a Node containing a Structure is an abstraction of the Structure,
+              like symbols are in Lisps. A Node containing a Structure is
               referred to as <keyword>structured</keyword>, and is
               otherwise <keyword>atomic</keyword>. Nodes are one of the key
               primitives of the process
               of <a href="https://en.wikipedia.org/wiki/Abstraction">abstraction</a>
-              in Amlang; any structure&#8213;or even a vague concept with no
-              associated structure&#8213;can be inserted into an Environment,
+              in Amlang; any Structure&#8213;or even a vague concept with no
+              associated Structure&#8213;can be inserted into an Environment,
               and the resulting Node may then be used to refer to that
-              structure/concept. Importantly, Nodes are also one of the S-exp
-              primitives in Amlang, meaning that structures may themselves
+              Structure/concept. Importantly, Nodes are also one of the S-exp
+              primitives in Amlang, meaning that Structures may themselves
               contain Nodes. It's in this way that Amlang S-exps may represent
-              cycles despite their base structure being inherently non-cyclic.
+              cycles despite their base Structure being inherently non-cyclic.
               Note that Nodes don't necessarily have any one "meaning", and the
               fact that a Node is discrete does not necessitate that the meaning
               it abstracts is a discrete or formal concept (like how the
@@ -497,14 +497,14 @@
 
             <p class="text-article">
               In this way, Nodes can be parts of the metagraph&#8213;connected
-              by triples&#8213;or parts of structures within or external to the
+              by triples&#8213;or parts of Structures within or external to the
               metagraph, connected by cons cells or any aggregate primitive
-              types (arrays, hash tables, etc). Since the structures within the
+              types (arrays, hash tables, etc). Since the Structures within the
               metagraph may themselves refer to different parts of the
               metagraph, the result is less like a plane of triple-connected
-              nodes containing isolated structures, and more like a spherical
+              nodes containing isolated Structures, and more like a spherical
               shell of triple-connected nodes that are internally interconnected
-              by structures built on top of each other (just an analogy of
+              by Structures built on top of each other (just an analogy of
               course; the metagraph alone need not
               be <a href="https://en.wikipedia.org/wiki/Planar_graph">planar</a>).
               We thus refer to the Environment as a <keyword>structured
@@ -514,7 +514,7 @@
             <p class="text-article">
               Finally, triples in the Environment are also a kind of Node.
               Conceptually, one can think of triples as a specific kind of
-              structured Node, whose structure is treated specially by the
+              structured Node, whose Structure is treated specially by the
               underlying Amlang implementation and
               the <a href="https://github.com/Khouderchah-Alex/amlang/blob/master/src/environment/environment.rs#L18">Environment
               interface</a>. With triples as Nodes, we can make triples about
@@ -526,7 +526,7 @@
               that triples represent knowledge (whether through local
               connections alone or global structure holistically) reifying
               triples as Nodes allows for knowledge-about-knowledge, both in the
-              form of structure and metagraph. This same reification could be
+              form of Structure and metagraph. This same reification could be
               achieved just by making edges (pairs) as a kind of Node, but as
               stated earlier, triples are a more convenient model when we care
               not only about whether Nodes are related but also about how.
@@ -611,7 +611,7 @@
               Triples and cons cells are both a form of glue between components.
               In triples, the components being glued are always Nodes (although
               the Nodes may be structured), whereas cons cells glue together
-              structures (although the structures might be or contain Nodes). As
+              Structures (although the Structures might be or contain Nodes). As
               discussed in the earlier section on S-exps, cons cells are a
               uni-directional relation; only from the perspective of the cons
               does the relation exist. On the other hand, triples are a
@@ -623,7 +623,7 @@
             </p>
 
             <p class="text-article">
-              It's worth looking at metagraph > structure > array as models of
+              It's worth looking at Metagraph > Structure > Array as models of
               storage providing a hierarchy of flexibility and inverse hierarchy
               of performance. Triples as a glue are very flexible and
               expressive, but are also clearly quite removed from the underlying
@@ -641,7 +641,7 @@
               model of data requires developers to mentally "compile down" their
               data model into arrays. A key principle of Amlang is the ability
               to both collapse and reproduce the context that provides semantics
-              for a particular structure&#8213;whether in metagraph, S-exp, or
+              for a particular Structure&#8213;whether in metagraph, S-exp, or
               array&#8213;although we defer this to the next article.
             </p>
 
@@ -688,7 +688,7 @@
             <p class="text-article">
               This article described Environment as a structured
               metagraph&#8213;an interrelation of triplestore and S-exp-like
-              structure&#8213;using Nodes as the bridge between these quad- and
+              Structure&#8213;using Nodes as the bridge between these quad- and
               uni-directional models of storage. While this idea may seem
               interesting, Environments truly come to life only when we add
               Agents, which is the topic of the next article in this series.
