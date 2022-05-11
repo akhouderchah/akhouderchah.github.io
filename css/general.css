@@ -282,9 +282,10 @@ pre code {
 }
 .night-mode ::-moz-selection {
     text-shadow: none;
-    background: #909cb6;
+    background: #6e5f41;
 }
 .night-mode ::selection {
     text-shadow: none;
-    background: #909cb6;
+    background: #6e5f41;
+    /*background: #e1e9fa;*/
 }
