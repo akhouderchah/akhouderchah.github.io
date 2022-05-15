@@ -383,7 +383,29 @@
                         <li>Category: Graphic Design</li>
                       </ul>
                       -->
-                  <p>Amlang is a language system that reverses the bifurcation into programming language and database, permits self-leverage in both Amlang and the underlying Rust, and maintains operational agnosticism.</p>
+                  <p>
+                    Amlang is a language system that reverses the bifurcation
+                    into programming language and database, permits
+                    self-leverage in both Amlang and the underlying Rust, and
+                    maintains operational agnosticism.
+                  </p>
+                  <p>
+                    A 10,000 foot view of Amlang is as a graph database
+                    (<a href="https://en.wikipedia.org/wiki/Triplestore">triplestore</a>)
+                    with nodes containing and interconnected
+                    by <a href="https://en.wikipedia.org/wiki/S-expression">S-exp</a>-like
+                    structures, called the Environment. Agents exist in, modify,
+                    and explore the Environment, while using local state to
+                    apply subjective "lenses" to the shared Environment. Amlang
+                    code is evaluated into a representation within the
+                    Environment and can itself be explored and modified;
+                    consider an Agent exploring the code that it's currently
+                    executing. Indeed, many important components from the base
+                    system in Rust
+                    are <a href="https://en.wikipedia.org/wiki/Reification_(computer_science)">reified</a>
+                    in the Environment, allowing Amlang to modify and extend the
+                    system it exists on top of.
+                  </p>
                   <p>This series describes the project:</p>
                   <div class="row modal-list">
                     <div class="col-sm-4">
