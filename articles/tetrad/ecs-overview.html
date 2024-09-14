@@ -111,7 +111,7 @@
 
 			<aside name="DrawVsTransform"><h4>Why not just a DrawComponent?</h4>While the code would still work if the DrawComponent contained both what to draw and where to draw it, this would not be a good design. Imagine what would happen later, if we needed to add 3D sounds to our game. Should we duplicate position/orientation/scale information in the SoundComponent? Should the SoundSystem use information from both the SoundComponent and the DrawComponent? Thinking carefully about what components to create and what they should contain can save a lot of headache in the long-run.</aside>
 
-			<p class="text-article">Here is a basic example of how to create an entity with a TransformComponent and DrawComponent in my <a href="https://github.com/Khouderchah-Alex/tetrad-game/">work-in-progress game engine</a>. Note that the code for the necessary components and systems is not shown here:
+			<p class="text-article">Here is a basic example of how to create an entity with a TransformComponent and DrawComponent in my <a href="https://github.com/akhouderchah/tetrad-game/">work-in-progress game engine</a>. Note that the code for the necessary components and systems is not shown here:
 			<pre><code class="prettyprint linenums">Entity entity = EntityManager::CreateEntity();
 entity.Add&lt;TransformComponent&gt;()->Init(glm::vec3(0, 0, 0),      // position
 	                           glm::vec3(3.f, 2.3f, 1));    // scale
